@@ -46,7 +46,7 @@ function App() {
 					theme="dark"
 					mode="horizontal"
 					style={{ "justifyContent": "flex-end" }}
-					overflowedIndicator={false}
+					overflowedIndicator={true}
 					selectedKeys={selectedKeys[0]}
 					onClick={redirect}
 					items={new Array(4).fill(null).map((_, index) => {

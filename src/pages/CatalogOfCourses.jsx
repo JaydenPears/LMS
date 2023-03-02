@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+
+// Import static
 import "../static/styles/CatalogOfCourses.css"
 import {infoAboutCoursesTest, linkForActivityImg} from "../info_about_course/index.js"
 
@@ -38,6 +40,9 @@ const CatalogOfCourses = () => {
                     type={"text"}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                <div className="Filters">
+
+                </div>
             </div>
             <div className="CardsContainer">
                 {courses.map((_, index) =>

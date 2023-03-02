@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     width: 500px;
-    height: 100px
+    height: 300px
 }
 
 .SearchInput {
@@ -137,3 +137,4 @@ p{
     background: #ffffff;
     color: #000;
 }
+
