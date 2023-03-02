@@ -19,7 +19,7 @@ const pathForNavbar = ["/choice_school",
 
 
 function App() {
-	const location = useLocation()
+	const location = useLocation();
 	const [selectedKeys, setselectedKeys] = useState([""]);
 	const navigate = useNavigate();
 

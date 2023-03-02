@@ -86,24 +86,37 @@
 }
 
 .schedule .cards{
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    min-width: 500px;
-    min-height: 90px;
-    background: #1677ff;
+    width: 530px;
+    height: 110px;
+    background: #7db0f1;
     display: flex;
     flex-direction: row;
     border-radius: 10px;
 }
 
+.schedule .day-card h3 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
 .schedule .day-card{
     margin: 0px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .schedule .day-card .card{
-    min-width: 60px;
-    min-height: 60px;
-    background: #ccc;
+    width: 63px;
+    height: 63px;
+    background: #1677ff;
+}
+
+.schedule .day-card .card p{
+    margin: 0;
 }
 
 .intelligence{

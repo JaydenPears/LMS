@@ -1,20 +1,34 @@
 import React from "react"
+import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import {
+    infoAboutCoursesTest, linkForActivityImg, translateTypeOfActivity
+} from "../info_about_course/index.js"
+
+// static imports
 import "../static/styles/CourseDescription.css"
 import proton_round from "../static/imgs/proton-round.png"
 
 const days = [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-    "Воскресенье"
+    "ПН",
+    "ВТ",
+    "СР",
+    "ЧТ",
+    "ПТ",
+    "СБ",
+    "ВС"
 ]
 
 const CourseDescription = () => {
+    const location = useLocation().pathname.split('/');
+    const id_course = Number(location.pop()) - 1;
+    const type_of_activity = infoAboutCoursesTest[id_course]["type_of_activity"];
+    const TITLE = `${infoAboutCoursesTest[id_course]["name"]}`;
     return (
         <div className="CourseDescriptionLayout">
+            <Helmet>
+                <title>{TITLE}</title>
+            </Helmet>
             <div className="naming">
                 <div className="logo">
                     <img src={proton_round} alt=""/>
@@ -22,7 +36,7 @@ const CourseDescription = () => {
                 <div className="brief-information">
                     <div className="name">
                         <h1>
-                            Лицей Академии Яндекса
+                            {infoAboutCoursesTest[id_course]["name"]}
                         </h1>
                         <hr/>
                     </div>
@@ -35,11 +49,11 @@ const CourseDescription = () => {
             </div>
             <div className="activity">
                 <div className="logo">
-                    <img src="" alt=""/>
+                    <img src={linkForActivityImg[type_of_activity]} alt=""/>
                 </div>
                 <div className="name-of-activity">
                     <h1>
-                        Техническая направленность
+                        {translateTypeOfActivity[type_of_activity]}
                     </h1>
                 </div>
             </div>
@@ -69,7 +83,7 @@ const CourseDescription = () => {
                 </div>
             </div>
             <div className="intelligence">
-                <h3>Адрес проведения: </h3><h3 className="with-text-decoration">Большая Филёвская, дом 15</h3>
+                <h3>Адрес проведения: </h3><h3 className="with-text-decoration">{infoAboutCoursesTest[id_course]["address"]}</h3>
             </div>
             <div className="type-of-study">
                 <h3>Формат проведения: </h3><h3 className="with-text-decoration">Очные занятия</h3>
