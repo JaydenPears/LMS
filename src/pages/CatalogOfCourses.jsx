@@ -12,6 +12,9 @@ const CatalogOfCourses = () => {
             <Helmet>
                 <title>{TITLE}</title>
             </Helmet>
+            <div className="SearchAndFilter">
+                <input/>
+            </div>
             <div className="CardsContainer">
                 {infoAboutCoursesTest.map((_, index) =>
                     <div class="card">
