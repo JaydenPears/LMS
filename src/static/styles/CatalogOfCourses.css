@@ -1,0 +1,115 @@
+.CatalogLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100% - 131px);
+    align-items: center;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+p{
+    margin: 0;
+}
+
+.CardsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100%;
+    margin: 40px 0;
+}
+
+.CardsContainer .card {
+    position: relative;
+    margin: 30px;
+    min-width: 550px;
+    height: 450px;
+    background: #e5e5e7;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+
+.CardsContainer .card .content {
+    padding: 20px;
+    text-align: left;
+    max-width: 485px;
+    max-height: 400px;
+}
+
+.CardsContainer .card .content .about-course {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.CardsContainer .card .content img {
+    top: 20px;
+    left: 15px;
+    position: absolute;
+    width: 60px;
+    height: 50px;
+}
+
+.CardsContainer .card .description {
+    position: absolute;
+    top: 90px;
+    word-break: break-word;
+    left: 15px;
+    max-width: 485px;
+    font-size: 5rem;
+    margin: 0;
+}
+
+.CardsContainer .card .content h3 {
+    word-break: break-word;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+    font-size: 1.4rem;
+    color: #0a4ca8;
+    z-index: 1;
+    transition: 0.5s;
+    max-width: 400px;
+}
+
+.CardsContainer .card .content p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.CardsContainer .card .content a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-right: 10px;
+    transition: 0.5s;
+    background: #858484;
+}
+
+.CardsContainer .card .content .enter{
+    background: #1677ff;
+}
+
+.CardsContainer .card .content a:hover {
+    background: #ffffff;
+    color: #000;
+}

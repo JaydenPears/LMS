@@ -1,0 +1,48 @@
+.AuthLayout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100% - 131px);
+}
+
+.AuthLayout_innerWrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Join {
+    font-size: 28px;
+}
+
+.Join:hover,
+.Join:focus {
+
+}
+
+.JoinSubmit {
+    font-size: 21px;
+    text-align: center;
+    height: fit-content;
+    font-weight: 600;
+}
+
+.JoinSubmit:not(:disabled):hover {
+
+}
+
+.Text {
+    font-size: 16px;
+    color: #cccccc;
+    line-height: 18px;
+    text-align: center;
+}
+
+.ContextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
