@@ -4,9 +4,33 @@
     min-height: calc(100% - 131px);
     align-items: center;
     max-width: 100%;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.SearchAndFilter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 100px
+}
+
+.SearchInput {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 9px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+.SearchInput:hover,
+.SearchInput:focus {
+    border: 1px solid #1677ff;
+    outline: 0;
 }
 
 p{
