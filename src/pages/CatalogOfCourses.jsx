@@ -1,6 +1,9 @@
+// Import libs
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import MyMultiSelect from "../components/MyMultiSelect";
+import { settings } from "../settings_for_filters";
 
 // Import static
 import "../static/styles/CatalogOfCourses.css"
@@ -8,25 +11,62 @@ import {infoAboutCoursesTest, linkForActivityImg} from "../info_about_course/ind
 
 const TITLE = "Каталог курсов ГБОУ \"Образовательный центр \"Протон\"";
 
-const filterCourses = (searchText, listOfCourses) => {
-    if (!searchText){
-        return listOfCourses;
-    }
-    return listOfCourses.filter(({name}) => {
-        return name.toLowerCase().includes(searchText.toLowerCase())});
-}
-
 const CatalogOfCourses = () => {
     const [courses, setCourses] = useState([...infoAboutCoursesTest])
     const [searchTerm, setSearchTerm] = useState("");
 
+    const textForFilters = [
+        "Направленность",
+        "Адрес учреждения",
+        "Класс",
+        "Расписание посещения",
+        "Стоимость"
+    ]
+
+    const [activityFilter, setActivityFilter] = useState([])
+    const [adressFilter, setAdressFilter] = useState([])
+    const [ageLimitFilter, setAgeLimitFilter] = useState([])
+    const [scheduleFilter, setScheduleFilter] = useState([])
+    const [costFilter, setCostFilter] = useState([])
+
+    const setFilters = [setActivityFilter, setAdressFilter, setAgeLimitFilter, setScheduleFilter, setCostFilter];
+
+    const filterSearchCourses = (searchText, listOfCourses) => {
+        if (!searchText){
+            return listOfCourses;
+        }
+        return listOfCourses.filter(({name}) => {
+            return name.toLowerCase().includes(searchText.toLowerCase())});
+    }
+
     React.useEffect(() => {
         const Debounce = setTimeout(() => {
-            const filteredCourses = filterCourses(searchTerm, infoAboutCoursesTest);
+            const filteredCourses = filterSearchCourses(searchTerm, infoAboutCoursesTest);
             setCourses([...filteredCourses]);
         }, 300);
         return () => clearTimeout(Debounce);
     }, [searchTerm]);
+
+    const getSelectors = () => {
+        let items = [];
+        let keys = Object.keys(settings);
+        for (var index = 0; index < keys.length; index++){
+            let key = keys[index];
+            items.push(
+                <div className="FilterCard" key={index}>
+                    <h4>{textForFilters[index]}</h4>
+                    <MyMultiSelect
+                        parentCallback={setFilters[index]}
+                        options={settings[key]}
+                        key={index}
+                    />
+                </div>
+            )
+        }
+        return items;
+    }
+    
+    const selectors = getSelectors();
 
     return (
         <div className="CatalogLayout">
@@ -41,7 +81,9 @@ const CatalogOfCourses = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div className="Filters">
-
+                    {selectors.map((_, index) =>
+                        selectors[index]
+                    )}
                 </div>
             </div>
             <div className="CardsContainer">
