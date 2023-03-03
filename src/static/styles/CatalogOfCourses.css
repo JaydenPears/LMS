@@ -1,11 +1,11 @@
 .CatalogLayout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100% - 131px);
+    min-height: 100%;
     align-items: center;
     max-width: 100%;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .SearchAndFilter{

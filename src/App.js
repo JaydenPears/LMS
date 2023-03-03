@@ -6,8 +6,6 @@ import "./static/styles/base.css"
 import { Layout, Menu } from 'antd';
 import { useLocation } from 'react-router-dom';
 
-import "./static/styles/base.css"
-
 const { Header, Footer } = Layout;
 const infoForNavbar = ["Выбор образовательной организации",
 					   "О нас",
@@ -39,7 +37,7 @@ function App() {
 
 	return (
 		<div className="AppDiv">
-			<Layout className="layout">
+			<Layout className="layout" style={{minHeight: "calc(100% - 67px)"}}>
 				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }}>
 					<div className="logo">
 						<Link className="MainPageLink" to="">LMS</Link>
@@ -61,11 +59,9 @@ function App() {
 					/>
 				</Header>
 				<AppRouter className="BodyOfContent"/>
-				<Footer 
-					style={{ textAlign: 'center', background: "#e7e7e7"}}
-				>
-					Learning Management System ©2023 Made by Vladimir Chernov
-				</Footer>
+			</Layout>
+			<Layout>
+				<Footer style={{ textAlign: 'center', background: "#e7e7e7"}}>Learning Management System ©2023 Made by Vladimir Chernov</Footer>
 			</Layout>
 		</div>
 	);
