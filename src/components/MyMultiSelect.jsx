@@ -14,9 +14,18 @@ const MyMultiSelect = ({parentCallback, options}) => {
     }, [selected]) // eslint-disable-line react-hooks/exhaustive-deps
     
     const customValueRenderer = (selected, _options) => {
-        return selected.length
-          ? `Выбрано ${selected.length} items`
-          : "Любой";
+        if (selected.length === 0) {
+            return "Любой"
+        }
+        else if (selected.length % 10 === 1 && selected.length !== 11){
+            return `Выбран ${selected.length} вариант`
+        }
+        else if (selected.length % 10 >= 2 && selected.length % 10 <= 4){
+            return `Выбрано ${selected.length} варианта`
+        }
+        else {
+            return `Выбрано ${selected.length} вариантов`
+        }
     };
 
     return (
