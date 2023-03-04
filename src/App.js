@@ -37,7 +37,7 @@ function App() {
 
 	return (
 		<div className="AppDiv">
-			<Layout className="layout" style={{minHeight: "calc(100% - 67px)"}}>
+			<Layout className="layout" style={{minHeight: "100%"}}>
 				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }}>
 					<div className="logo">
 						<Link className="MainPageLink" to="">LMS</Link>
@@ -59,9 +59,9 @@ function App() {
 					/>
 				</Header>
 				<AppRouter className="BodyOfContent"/>
-			</Layout>
-			<Layout>
-				<Footer style={{ textAlign: 'center', background: "#e7e7e7"}}>Learning Management System ©2023 Made by Vladimir Chernov</Footer>
+				<Layout>
+					<Footer style={{ textAlign: 'center', background: "#e7e7e7"}}>Learning Management System ©2023 Made by Vladimir Chernov</Footer>
+				</Layout>
 			</Layout>
 		</div>
 	);

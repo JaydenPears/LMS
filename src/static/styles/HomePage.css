@@ -1,6 +1,6 @@
 .HomeLayout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100% - 131px);
+    min-height: calc(100vh - 133px);
     align-items: center;
 }

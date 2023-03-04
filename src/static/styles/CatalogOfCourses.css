@@ -1,12 +1,10 @@
 .CatalogLayout {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    align-items: center;
+    min-height: calc(100vh - 133px);
     max-width: 100%;
     align-items: center;
     flex-wrap: nowrap;
-    justify-content: center;
 }
 
 .SearchAndFilter{

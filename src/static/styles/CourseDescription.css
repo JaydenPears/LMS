@@ -1,7 +1,7 @@
 .CourseDescriptionLayout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100% - 131px);
+    min-height: calc(100vh - 133px);
     max-width: 100%;
     align-items: center;
     flex-wrap: wrap;
