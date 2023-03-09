@@ -17,15 +17,23 @@ const MyMultiSelect = ({parentCallback, options}) => {
         if (selected.length === 0) {
             return "Любой"
         }
-        else if (selected.length % 10 === 1 && selected.length !== 11){
-            return `Выбран ${selected.length} вариант`
-        }
-        else if (selected.length % 10 >= 2 && selected.length % 10 <= 4){
-            return `Выбрано ${selected.length} варианта`
-        }
         else {
-            return `Выбрано ${selected.length} вариантов`
+            console.log(selected)
+            var new_array = []
+            for (var i in selected){
+                new_array.push(selected[i]['label'])
+            }
+            return new_array.join(", ")
         }
+        // else if (selected.length % 10 === 1 && selected.length !== 11){
+        //     return `Выбран ${selected.length} вариант`
+        // }
+        // else if (selected.length % 10 >= 2 && selected.length % 10 <= 4){
+        //     return `Выбрано ${selected.length} варианта`
+        // }
+        // else {
+        //     return `Выбрано ${selected.length} вариантов`
+        // }
     };
 
     return (
