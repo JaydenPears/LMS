@@ -19,7 +19,7 @@ const MyMultiSelect = ({parentCallback, options}) => {
             names.push(_options[name]["label"]);
         }
         if (selected.length === 0) {
-            return "Любой";
+            return "Не выбрано";
         }
         else {
             var returned_data = [];
