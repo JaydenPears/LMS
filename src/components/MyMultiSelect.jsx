@@ -14,18 +14,38 @@ const MyMultiSelect = ({parentCallback, options}) => {
     }, [selected]) // eslint-disable-line react-hooks/exhaustive-deps
     
     const customValueRenderer = (selected, _options) => {
+        var names = [];
+        for (var name in _options){
+            names.push(_options[name]["label"]);
+        }
         if (selected.length === 0) {
-            return "Любой"
-        }
-        else if (selected.length % 10 === 1 && selected.length !== 11){
-            return `Выбран ${selected.length} вариант`
-        }
-        else if (selected.length % 10 >= 2 && selected.length % 10 <= 4){
-            return `Выбрано ${selected.length} варианта`
+            return "Любой";
         }
         else {
-            return `Выбрано ${selected.length} вариантов`
+            var returned_data = [];
+            for (var i in selected){
+                returned_data.push(selected[i]["label"]);
+            }
+
+            // Строковая сортировка элементов
+            returned_data.sort(function (item1, item2) {
+                return names.indexOf(item1) - names.indexOf(item2);
+            })
+            return returned_data.join(", ");
         }
+
+        // Иного формата вывод текста:
+        // "Выбрано {n} вариант(-а/-ов)"
+
+        // else if (selected.length % 10 === 1 && selected.length !== 11){
+        //     return `Выбран ${selected.length} вариант`
+        // }
+        // else if (selected.length % 10 >= 2 && selected.length % 10 <= 4){
+        //     return `Выбрано ${selected.length} варианта`
+        // }
+        // else {
+        //     return `Выбрано ${selected.length} вариантов`
+        // }
     };
 
     return (
