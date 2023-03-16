@@ -208,8 +208,8 @@ const CatalogOfCourses = () => {
                                 <p>🏢 { courses[index]['address'] }</p>
                                 <p>🧒
                                 {courses[index]['age_limit'].length === 1
-                                    ? ` ${convertNum(courses[index]['age_limit'][0])} классы`
-                                    : ` С ${courses[index]['age_limit'][0]}-го по ${courses[index]['age_limit'][1]}-ый классы`
+                                    ? ` ${convertNum(courses[index]['age_limit'][0])} класс`
+                                    : ` С ${courses[index]['age_limit'][0]}-${courses[index]['age_limit'][1]} классы`
                                 }
                                 </p>
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
