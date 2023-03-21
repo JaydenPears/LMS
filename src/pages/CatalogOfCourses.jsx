@@ -48,7 +48,7 @@ const CatalogOfCourses = () => {
 
     const filterCourses = (coursesList) => {
         let newCoursesList = [];
-        for (var index in coursesList){
+        for (let index in coursesList){
             let count = 0
             let item = coursesList[index];
             let type_of_course = translateTypeOfActivity[item["type_of_activity"]];
@@ -95,7 +95,7 @@ const CatalogOfCourses = () => {
             }
 
             if (scheduleFilter.length !== 0){
-                for (var i in item["schedule"]){
+                for (let i in item["schedule"]){
                     let day = item["schedule"][i];
                     if (scheduleFilter.includes(day) || day === "Любой день недели"){
                         count++;
@@ -150,7 +150,7 @@ const CatalogOfCourses = () => {
     const getSelectors = () => {
         let items = [];
         let keys = Object.keys(settings);
-        for (var index = 0; index < keys.length; index++){
+        for (let index = 0; index < keys.length; index++){
             let key = keys[index];
             items.push(
                 <div className="FilterCard" key={index}>
