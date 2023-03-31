@@ -1,0 +1,26 @@
+[{
+    "type": "1",
+    "description": "Задание 1_3",
+    "correct_answer": "3"
+  },
+  {
+    "type": "2",
+    "description": "Задание 2_3",
+    "correct_answer": "4"
+  },
+  {
+    "type": "3",
+    "description": "Задание 3_3",
+    "correct_answer": "3"
+  },
+  {
+    "type": "4",
+    "description": "Задание 4_3",
+    "correct_answer": "4"
+  },
+  {
+    "type": "5",
+    "description": "Задание 5_3",
+    "correct_answer": "5"
+  }
+]
