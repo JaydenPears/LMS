@@ -3,4 +3,63 @@
     align-items: center;
     flex-direction: column;
     min-height: calc(100vh - 133px);
+    font-size: 20px;
+}
+
+.card {
+    margin: 30px;
+    min-width: 900px;
+    min-height: 300px;
+    background: #f3f3f5;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: 0.5s;
+}
+
+.card .content {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.card .content .NamingOfQuestion {
+    min-width: 80%;
+    min-height: 50px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.card .description {
+    word-break: break-word;
+    min-width: 100%;
+    font-size: 5rem;
+    margin: 0;
+}
+
+.card .content p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.9);
+    transition: 0.5s;
+}
+
+.card .content .NamingOfQuestion h3 {
+    word-break: break-word;
+    font-size: 1.4rem;
+    color: #0a4ca8;
+    transition: 0.5s;
+    margin: 0;
 }
