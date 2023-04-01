@@ -2,38 +2,44 @@
 import React, { useState } from "react"
 import { useLocation } from "react-router";
 import { Helmet } from 'react-helmet';
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 // import styles:
-import "../static/styles/Task.css"
+import "../static/styles/Test.css"
 
 const Task = () => {
     const location = useLocation().pathname.split('/');
-    const task_id = Number(location.pop());
+    const test_id = Number(location.pop());
     const [tasks, setTasks] = useState([]);
+    const [answers, setAsnwers] = useState({});
 
-    const TITLE = `Тестирование № ${task_id}`;
+    const TITLE = `Тестирование № ${test_id}`;
 
-    const func = (e) => {
-        console.log(e.target.getAttribute('a-key'));
+    const changeAnswersOfTest = (index, value) => {
+        console.log(answers);
+        setAsnwers(prevAnswers => ({...prevAnswers, [index]: value}));
     }
 
     React.useEffect(() => {
         axios.get(
-            `http://127.0.0.1:8000/api/test5kl/${task_id}/`
+            `http://127.0.0.1:8000/api/test5kl/${test_id}/`
         ).then((resp) => {
             const data = resp.data;
             setTasks(data['task']);
+            for (let i = 0; i < tasks.length; i++){
+                setAsnwers(prevAnswers => ({...prevAnswers, [i]: ""}))
+            }
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [task_id]);
+    }, [test_id]);
 
     return (
         <div className="TaskLayout">
             <Helmet>
                 <title>{TITLE}</title>
             </Helmet>
-            <h1>Task № {task_id}</h1>
+            <h1>Тестирование № {test_id}</h1>
             <div className="Tasks">
             {tasks.map((_, index) =>
                     <div className="card" key={index}>
@@ -52,7 +58,9 @@ const Task = () => {
                                     type="text"
                                     className="input-answer"
                                     required="required"
-                                    onChange={(e) => func(e)}
+                                    onChange={
+                                        (e) => changeAnswersOfTest(e.target.getAttribute('a-key'), e.target.value)
+                                    }
                                     />
                                 <span>
                                     Ответ
