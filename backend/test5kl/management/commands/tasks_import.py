@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Import new tasks from tasks.json'
 
     def handle(self, *args, **options):
-        with open('tasks.json') as tasks_file:
+        with open('tasks.json', encoding='UTF-8') as tasks_file:
             f = tasks_file.read()
             data = json.loads(f)
             for item in data:

@@ -6,8 +6,15 @@
     font-size: 20px;
 }
 
-.card {
-    margin: 30px;
+.Tasks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.task {
+    margin: 20px;
     min-width: 900px;
     min-height: 150px;
     background: #f3f3f5;
@@ -19,7 +26,7 @@
     transition: 0.5s;
 }
 
-.card .content {
+.task .content {
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -30,7 +37,7 @@
     align-content: center;
 }
 
-.card .content .NamingOfQuestion {
+.task .content .NamingOfQuestion {
     min-width: 80%;
     min-height: 50px;
     margin: 0;
@@ -42,21 +49,21 @@
     margin-bottom: 10px;
 }
 
-.card .description {
+.task .description {
     word-break: break-word;
     min-width: 100%;
     font-size: 5rem;
     margin: 0;
 }
 
-.card .content p {
+.task .content p {
     font-size: 1rem;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.9);
     transition: 0.5s;
 }
 
-.card .content .NamingOfQuestion h3 {
+.task .content .NamingOfQuestion h3 {
     word-break: break-word;
     font-size: 1.4rem;
     color: #0a4ca8;
@@ -108,4 +115,35 @@
 .inputLayout input:valid,
 .inputLayout input:focus {
     border: 1px solid #0a4ca8;
+}
+
+.Submit-Test {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    margin: 0 0.25em 0 0;
+    padding: 0.78571429em 1.5em 0.78571429em;
+    text-transform: none;
+    text-shadow: none;
+    line-height: 1em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+    user-select: none;
+    transition: 0.5s;
+    will-change: '';
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.Submit-Test:focus, .Submit-Test:active,
+.Submit-Test:hover {
+    background: #1677ff;
+    color: #e0e1e2;
 }
