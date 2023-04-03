@@ -14,23 +14,20 @@ const Task = () => {
     const location = useLocation().pathname.split('/');
     const test_id = Number(location.pop());
     const [tasks, setTasks] = useState([]);
-    const [answers, setAsnwers] = useState({});
-    const [user, setUser] = useState("")
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const TITLE = `Тестирование № ${test_id}`;
 
-    const changeAnswersOfTest = (index, value) => {
-        console.log(answers);
-        setAsnwers(prevAnswers => ({...prevAnswers, [index]: value}));
-    }
-
-    const changeUser = (value) => {
-        setUser(value);
-    }
-
     const onSubmitFunc = (data) => {
-        console.log(data);
+        let postData = {username: data['user'], answers: []};
+        for (let i in data){
+            if (i === "user"){
+                continue;
+            }
+            postData.answers.push({id: i, user_answer: data[i]});
+        }
+        postData = JSON.stringify(postData);
+        const response = axios.post("http://127.0.0.1:8000/api/get-answer/", postData);
     }
 
     React.useEffect(() => {
@@ -39,9 +36,6 @@ const Task = () => {
         ).then((resp) => {
             const data = resp.data;
             setTasks(data['task']);
-            for (let i = 0; i < tasks.length; i++){
-                setAsnwers(prevAnswers => ({...prevAnswers, [i]: ""}))
-            }
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [test_id]);
@@ -52,7 +46,7 @@ const Task = () => {
                 <title>{TITLE}</title>
             </Helmet>
             <h1>Тестирование № {test_id}</h1>
-            <Form className="Tasks" onSubmit={onSubmitFunc}>
+            <Form className="Tasks" onSubmit={handleSubmit(onSubmitFunc)}>
                 <Form.Field className="task">
                     <div className="content">
                         <div className="NamingOfQuestion">
@@ -69,9 +63,6 @@ const Task = () => {
                                 required
                                 className="input-answer"
                                 {...register("user", {required: true})}
-                                onChange={
-                                    (e) => changeUser(e.target.value)
-                                }
                                 />
                             <span>
                                 Ответ
@@ -95,11 +86,8 @@ const Task = () => {
                                     a-key={index}
                                     type="text"
                                     className="input-answer"
-                                    {...register(`task${index}`)}
-                                    onChange={
-                                        (e) => changeAnswersOfTest(e.target.getAttribute('a-key'), e.target.value)
-                                    }
-                                    />
+                                    {...register(`${tasks[index]["id"]}`)}
+                                />
                                 <span>
                                     Ответ
                                 </span>
