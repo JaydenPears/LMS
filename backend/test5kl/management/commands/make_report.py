@@ -20,13 +20,14 @@ class Command(BaseCommand):
                 data[fio].append([task[0], task[1] + '/' + task[2]])
         for row, (fio, answers) in enumerate(data.items()):
             worksheet.write(row, 0, fio)
+            total = sum(int(el[0]) for el in answers)
             for i in range(len(answers)):
-                print(answers[1])
                 if answers[i][0] == '1':
                     correct_format = report.add_format({'bg_color': 'green'})
                     worksheet.write(row, i + 1, answers[i][1], correct_format)
                 else:
                     wrong_format = report.add_format({'bg_color': 'red'})
                     worksheet.write(row, i + 1, answers[i][1], wrong_format)
+            worksheet.write(row, len(answers) + 1, total)
         report.close()
 
