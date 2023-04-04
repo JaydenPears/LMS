@@ -10,10 +10,10 @@ class TestAdmin(admin.ModelAdmin):
     list_display = ('get_tasks', )
 
 
-class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('test', 'answer')
+"""class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('test', 'answer')"""
 
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Test, TestAdmin)
-admin.site.register(Answer, AnswerAdmin)
+"""admin.site.register(Answer, AnswerAdmin)"""

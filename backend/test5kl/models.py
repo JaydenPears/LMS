@@ -21,8 +21,9 @@ class Test(models.Model):
 
 
 class Answer(models.Model):
-    test = models.OneToOneField(Task,
+    """test = models.OneToOneField(Task,
                                 on_delete=models.CASCADE,
                                 related_name='Test'
-                                )
-    answer = models.CharField(max_length=1000)
+                                )"""
+    fio = models.CharField(max_length=500)
+    answer = models.CharField(max_length=10000)
