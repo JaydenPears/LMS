@@ -26,7 +26,6 @@ const Task = () => {
             }
             postData.answers.push({id: i, user_answer: data[i]});
         }
-        postData = JSON.stringify(postData);
         const response = axios.post("http://127.0.0.1:8000/api/get-answer/", postData);
     }
 
