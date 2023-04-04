@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import "../static/styles/ResultOfTest.css"
 
 const ResultOfTest = () => {
-    const prev_location = useLocation().pathname.split('/').
-    slice(0, useLocation().pathname.split('/').length - 1).join('/');
+    const location = useLocation().pathname.split('/');
+    const prev_location = location.slice(0, location.length - 1).join('/');
     const {state} = useLocation();
     const { test_id, show_results, text } = state;
 
