@@ -2,6 +2,7 @@ import Auth from "../pages/Auth";
 import CatalogOfCourses from "../pages/CatalogOfCourses";
 import CourseDescription from "../pages/CourseDescription";
 import HomePage from "../pages/HomePage";
+import ResultOfTest from "../pages/ResultOfTest";
 import Test from "../pages/Test";
 
 
@@ -12,4 +13,5 @@ export const arrayRoutes = [
     {id: 3, path: "/catalog", element: <CatalogOfCourses/>, exact: true},
     {id: 4, path: "/course_info/:id", element: <CourseDescription/>, exact: true},
     {id: 5, path: "/test/:id", element: <Test/>, exact: true},
+    {id: 6, path: "/test/:id/get_result", element: <ResultOfTest/>}
 ]

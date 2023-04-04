@@ -2,8 +2,7 @@
 import React, { useState } from "react"
 import axios from 'axios'
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { Helmet } from 'react-helmet';
 import { Form, Button } from 'semantic-ui-react';
 
@@ -11,10 +10,11 @@ import { Form, Button } from 'semantic-ui-react';
 import "../static/styles/Test.css"
 
 const Task = () => {
-    const location = useLocation().pathname.split('/');
-    const test_id = Number(location.pop());
+    const location = useLocation().pathname;
+    const test_id = Number(location.split('/').pop());
+    const navigate = useNavigate();
     const [tasks, setTasks] = useState([]);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm(); /* eslint no-unused-vars: */
 
     const TITLE = `Тестирование № ${test_id}`;
 
@@ -26,14 +26,20 @@ const Task = () => {
             }
             postData.answers.push({id: i, user_answer: data[i]});
         }
-        const response = axios.post("http://127.0.0.1:8000/api/get-answer/", postData);
+        
+        axios.post(
+            "http://127.0.0.1:8000/api/get-answer/", postData
+        ).then((response) => {
+            const data = response.data;
+            navigate(location + "/get_result", {state: {test_id: test_id,show_results: false, text: data}});
+        });
     }
 
     React.useEffect(() => {
         axios.get(
             `http://127.0.0.1:8000/api/test5kl/${test_id}/`
-        ).then((resp) => {
-            const data = resp.data;
+        ).then((response) => {
+            const data = response.data;
             setTasks(data['task']);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
