@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import {
@@ -20,8 +20,14 @@ const days = [
 ]
 
 const CourseDescription = () => {
-    const location = useLocation().pathname.split('/');
-    const id_course = Number(location.pop()) - 1;
+    const location = useLocation();
+
+    useEffect(() => {
+       window.scrollTo(0, 0);
+    }, [location]);
+
+    let data = location.pathname.split('/');
+    const id_course = Number(data.pop()) - 1;
     const type_of_activity = infoAboutCoursesTest[id_course]["type_of_activity"];
     const TITLE = `${infoAboutCoursesTest[id_course]["name"]}`;
     return (

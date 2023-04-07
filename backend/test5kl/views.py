@@ -18,8 +18,9 @@ class TestView(viewsets.ModelViewSet):
 @api_view(['POST', 'GET'])
 def get_result(request):
     if request.method == 'POST':
-        for t in request.data:
-            data = json.loads(t)
+        # for t in request.data:
+        #     data = json.loads(t)
+        data = request.data
         answer = Answer()
         answer.fio = data['username']
         result = []
