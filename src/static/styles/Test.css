@@ -90,28 +90,6 @@
     height: 50px;
 }
 
-.inputLayout span {
-    position: absolute;
-    left: 0;
-    padding: 10px;
-    pointer-events: none;
-    font-size: 1em;
-    color: rgba(0, 0, 0, 0.7);
-    text-transform: uppercase;
-    transition: 0.5s;
-    height: 50px;
-}
-
-.inputLayout input:valid ~ span,
-.inputLayout input:focus ~ span {
-    color: #0a4ca8;
-    transform: translateX(10px) translateY(-12px);
-    font-size: 0.8em;
-    padding: 0px 10px;
-    background: #f3f3f5;
-    height: 0.8em;
-}
-
 .inputLayout input:valid,
 .inputLayout input:focus {
     border: 1px solid #0a4ca8;

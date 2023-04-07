@@ -67,11 +67,9 @@ const Task = () => {
                                 type="text"
                                 required
                                 className="input-answer"
+                                placeholder="ОТВЕТ"
                                 {...register("user", {required: true})}
                                 />
-                            <span>
-                                Ответ
-                            </span>
                         </div>
                     </div>
                 </Form.Field>
@@ -91,11 +89,9 @@ const Task = () => {
                                     a-key={index}
                                     type="text"
                                     className="input-answer"
+                                    placeholder="ОТВЕТ"
                                     {...register(`${tasks[index]["id"]}`)}
                                 />
-                                <span>
-                                    Ответ
-                                </span>
                             </div>
                         </div>
                     </Form.Field>
