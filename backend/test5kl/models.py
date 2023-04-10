@@ -8,8 +8,6 @@ class Task(models.Model):
 
 
 class Test(models.Model):
-    # title = models.CharField(max_length=500)
-    # fio = models.CharField(max_length=500)
     task = models.ManyToManyField(Task)
 
     def get_tasks(self):
@@ -21,9 +19,5 @@ class Test(models.Model):
 
 
 class Answer(models.Model):
-    """test = models.OneToOneField(Task,
-                                on_delete=models.CASCADE,
-                                related_name='Test'
-                                )"""
     fio = models.CharField(max_length=500)
     answer = models.CharField(max_length=10000)

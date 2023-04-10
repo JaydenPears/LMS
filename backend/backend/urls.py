@@ -17,13 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from test5kl import views
+from coursecatalog import views as course_view
 
 router = routers.DefaultRouter()
 router.register(r'test5kl', views.TestView, 'test')
+#router.register(r'coursecatalog', course_view.CatalogView, 'catalog')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/get-answer/', views.get_result)
+    path('api/get-answer/', views.get_result),
+   # path('api/catalog/', course_view.catalog)
 ]
 

@@ -9,7 +9,6 @@ from .serializers import TestSerializer
 from .models import Test, Answer, Task
 
 
-# Create your views here.
 
 class TestView(viewsets.ModelViewSet):
     serializer_class = TestSerializer
@@ -18,8 +17,6 @@ class TestView(viewsets.ModelViewSet):
 @api_view(['POST', 'GET'])
 def get_result(request):
     if request.method == 'POST':
-        # for t in request.data:
-        #     data = json.loads(t)
         data = request.data
         answer = Answer()
         answer.fio = data['username']
