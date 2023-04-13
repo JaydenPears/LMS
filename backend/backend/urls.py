@@ -28,14 +28,17 @@ router.register(r'coursecatalog', course_view.CatalogView)
 router.register(r'departments', course_view.DepartmentView)
 router.register(r'departments-icons', course_view.DepartmentImagesView)
 router.register(r'buildings', course_view.BuildingView)
-
+router.register(r'teacher', course_view.TeacherView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/get-answer/', views.get_result),
     path('api/catalog/', course_view.catalog),
-    path('api/catalog/<int:pk>/', course_view.course_view)
+    path('api/catalog/<int:pk>/', course_view.course_view),
+    path('api/activities/', course_view.activities),
+    path('api/addresses/', course_view.addresses)
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

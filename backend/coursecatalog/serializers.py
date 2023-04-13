@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from coursecatalog.models import Course, Department, Building
+from coursecatalog.models import Course, Department, Building, Teacher
 
 
 class CatalogSerializer(serializers.ModelSerializer):
@@ -25,3 +25,9 @@ class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Building
         fields = ('id', 'address')
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ('id', 'fio', 'photo')
