@@ -3,9 +3,9 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from coursecatalog.models import Course, Lesson, Department
+from coursecatalog.models import Course, Lesson, Department, Building
 from coursecatalog.serializers import CatalogSerializer, DepartmentSerializer, \
-    DepartmentImagesSerializer
+    DepartmentImagesSerializer, BuildingSerializer
 
 
 class CatalogView(viewsets.ModelViewSet):
@@ -56,3 +56,8 @@ class DepartmentView(viewsets.ModelViewSet):
 class DepartmentImagesView(viewsets.ModelViewSet):
     serializer_class = DepartmentImagesSerializer
     queryset = Department.objects.all()
+
+
+class BuildingView(viewsets.ModelViewSet):
+    serializer_class = BuildingSerializer
+    queryset = Building.objects.all()

@@ -27,6 +27,7 @@ router.register(r'test5kl', views.TestView, 'test')
 router.register(r'coursecatalog', course_view.CatalogView)
 router.register(r'departments', course_view.DepartmentView)
 router.register(r'departments-icons', course_view.DepartmentImagesView)
+router.register(r'buildings', course_view.BuildingView)
 
 
 urlpatterns = [
@@ -37,4 +38,4 @@ urlpatterns = [
     path('api/catalog/<int:pk>/', course_view.course_view)
 ]
 
-urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
