@@ -21,7 +21,10 @@ from coursecatalog import views as course_view
 
 router = routers.DefaultRouter()
 router.register(r'test5kl', views.TestView, 'test')
-router.register(r'coursecatalog', course_view.CatalogView, 'catalog')
+router.register(r'coursecatalog', course_view.CatalogView)
+router.register(r'departments', course_view.DepartmentView)
+router.register(r'departments-icons', course_view.DepartmentImagesView)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

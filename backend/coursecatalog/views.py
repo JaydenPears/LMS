@@ -3,8 +3,9 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from coursecatalog.models import Course, Lesson
-from coursecatalog.serializers import CatalogSerializer
+from coursecatalog.models import Course, Lesson, Department
+from coursecatalog.serializers import CatalogSerializer, DepartmentSerializer, \
+    DepartmentImagesSerializer
 
 
 class CatalogView(viewsets.ModelViewSet):
@@ -45,3 +46,13 @@ def course_view(request, pk):
            'url': course.link, 'cost':course.financing,
            'department':course.department.name}
     return Response(res)
+
+
+class DepartmentView(viewsets.ModelViewSet):
+    serializer_class = DepartmentSerializer
+    queryset = Department.objects.all()
+
+
+class DepartmentImagesView(viewsets.ModelViewSet):
+    serializer_class = DepartmentImagesSerializer
+    queryset = Department.objects.all()
