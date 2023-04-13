@@ -35,7 +35,7 @@ const CourseDescription = () => {
         ).then((response) => {
             const data = response.data;
             setInfoAboutCourse({...data});
-        })
+        });
     }, [id_course, url]);
 
     const type_of_activity = infoAboutCourse["type_of_activity"];
