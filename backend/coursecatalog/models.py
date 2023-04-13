@@ -22,6 +22,8 @@ class Building(models.Model):
 
 class Department(models.Model):
     name = models.CharField(max_length=500, verbose_name='Название')
+    icon = models.ImageField(upload_to='department_icons/',
+                             verbose_name='Изображение')
 
     def __str__(self):
         return self.name
@@ -31,12 +33,27 @@ class Department(models.Model):
 
 
 class Course(models.Model):
+    CLASS_LIST = [(f'{i}', f'{i} класс') for i in range(1, 12)]
+    FINANCING_TYPES = [
+        ('Бесплатно', 'Бесплатно'),
+        ('Платно', 'Платно'),
+    ]
+    FORMAT_TYPES = [
+        ('Очно', 'Очно'),
+        ('Дистанционно', 'Дистанционно'),
+    ]
     name = models.CharField(max_length=500,
                             verbose_name='Название курса')
     short_description = models.CharField(max_length=1000,
                                          verbose_name='Короткое описание')
     long_description = models.CharField(max_length=100000,
                                         verbose_name='Полное описание')
+    start_class = models.CharField(max_length=100, choices=CLASS_LIST,
+                               verbose_name='Класс от')
+    end_class = models.CharField(max_length=100, choices=CLASS_LIST,
+                                   verbose_name='Класс до')
+    financing = models.CharField(max_length=100, choices=FINANCING_TYPES,
+                                   verbose_name='Финансирование')
     link = models.URLField(verbose_name='Ссылка на курс')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE,
                                 verbose_name='Учитель')
@@ -44,8 +61,9 @@ class Course(models.Model):
                                 verbose_name='Направленность')
     building = models.ForeignKey(Building, on_delete=models.CASCADE,
                                    verbose_name='Здание')
-    """lessons = models.ForeignKey(Lesson, on_delete=models.CASCADE,
-                                   verbose_name='Занятие')"""
+    format = models.CharField(max_length=100, choices=FORMAT_TYPES,
+                                   verbose_name='Формат проведения')
+
 
     class Meta:
         verbose_name = 'Курс'
@@ -71,9 +89,10 @@ class Lesson(models.Model):
                                    verbose_name='Занятие')
 
     def clean(self):
+        """Здесь будет валидация"""
         cleaned_data = super().clean()
         #true_answer = cleaned_data.get("true_answer")
-        print(self.start_time)
+        #print(self.start_time)
         #raise ValidationError("Время занятия введено некорректно")
         return cleaned_data
 
