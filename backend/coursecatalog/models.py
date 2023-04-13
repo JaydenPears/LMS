@@ -44,7 +44,7 @@ class Course(models.Model):
     ]
     name = models.CharField(max_length=500,
                             verbose_name='Название курса')
-    short_description = models.CharField(max_length=1000,
+    short_description = models.CharField(max_length=300,
                                          verbose_name='Короткое описание')
     long_description = models.CharField(max_length=100000,
                                         verbose_name='Полное описание')
@@ -71,13 +71,13 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     WEEKDAY_LIST = [
-        ('Пн', 'Понедельник'),
-        ('Вт', 'Вторник'),
-        ('Ср', 'Среда'),
-        ('Чт', 'Четверг'),
-        ('Пт', 'Пятница'),
-        ('Сб', 'Суббота'),
-        ('Вск', 'Воскресение'),
+        ('Понедельник', 'Понедельник'),
+        ('Вторник', 'Вторник'),
+        ('Среда', 'Среда'),
+        ('Четверг', 'Четверг'),
+        ('Пятница', 'Пятница'),
+        ('Суббота', 'Суббота'),
+        ('Воскресение', 'Воскресение'),
     ]
     weekday = models.CharField(max_length=500, choices=WEEKDAY_LIST,
                                verbose_name='День недели')
