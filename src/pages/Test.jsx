@@ -9,6 +9,8 @@ import { Form, Button } from 'semantic-ui-react';
 // import styles:
 import "../static/styles/Test.css"
 
+var Latex = require('react-latex');
+
 const Task = () => {
     const location = useLocation().pathname;
     const test_id = Number(location.split('/').pop());
@@ -83,6 +85,11 @@ const Task = () => {
                                 <p align="justify">
                                     { tasks[index]['description'] }
                                 </p>
+                                <div style={{display: "flex", alignContent: "flex-start", fontSize:"18px", textIndent: "30px"}}>
+                                    <Latex align="justify">
+                                    We give illustrations for the three processes $e^+e^-$, gluon-gluon and $\\gamma\\gamma \\to W t\\bar b$.
+                                    </Latex>
+                                </div>
                             </div>
                             <div className="inputLayout">
                                 <input
