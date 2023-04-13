@@ -1,11 +1,12 @@
 // Import libs
 import React, { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import MyMultiSelect from "../components/MyMultiSelect";
-import { settings } from "../settings_for_filters";
+import { getSettings } from "../settings_for_filters";
 import {
-    infoAboutCoursesTest, linkForActivityImg, translateTypeOfActivity
+    linkForActivityImg, translateTypeOfActivity
 } from "../info_about_course/index.js"
 
 // Import static
@@ -18,7 +19,10 @@ function capitalizeFirstLetter(string) {
 }
 
 const CatalogOfCourses = () => {
-    const [courses, setCourses] = useState([...infoAboutCoursesTest])
+    const url = `http://127.0.0.1:8000/api/`;
+    const [settings, setSettings] = useState({});
+    const [allCourses, setAllCourses] = useState([]);
+    const [courses, setCourses] = useState([])
     const [searchTerm, setSearchTerm] = useState("");
 
     const textForFilters = [
@@ -28,6 +32,20 @@ const CatalogOfCourses = () => {
         "Расписание посещения",
         "Стоимость"
     ]
+
+    React.useEffect(() => {
+        axios.get(
+            `${url}catalog/`
+        ).then((response) => {
+            const data = response.data;
+            setAllCourses(data);
+            setCourses(data);
+        })
+
+        getSettings(`${url}`).then(value => {
+            setSettings(value);
+        })
+    }, [setAllCourses]);
 
     const convertNum = (strNum) => {
         if (strNum === 3){
@@ -106,8 +124,7 @@ const CatalogOfCourses = () => {
             else{
                 count++;
             }
-
-            let courseCost = capitalizeFirstLetter(item["cost"].split(" ")[1])
+            let courseCost = capitalizeFirstLetter(item["cost"])
             if (costFilter.length !== 0){
                 if (costFilter.includes(courseCost)){
                     count++;
@@ -133,7 +150,7 @@ const CatalogOfCourses = () => {
     }
 
     const filteredAndSearchedCourses = () => {
-        let searchedCourses = filterSearchCourses(searchTerm, infoAboutCoursesTest);
+        let searchedCourses = filterSearchCourses(searchTerm, allCourses);
         let searchedAndFilteredCourses = filterCourses(searchedCourses);
         return searchedAndFilteredCourses;
     }
@@ -145,7 +162,7 @@ const CatalogOfCourses = () => {
         }, 300);
         return () => clearTimeout(Debounce);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchTerm, activityFilter, adressFilter, ageLimitFilter, scheduleFilter, costFilter]);
+    }, [searchTerm, activityFilter, adressFilter, ageLimitFilter, scheduleFilter, costFilter, allCourses]);
 
     const getSelectors = () => {
         let items = [];
@@ -200,7 +217,7 @@ const CatalogOfCourses = () => {
                             </div>
                             <div className="description">
                                 <p align="justify">
-                                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit. sed quia consequuntur magni dolores eos, qui ratione voluptatem.
+                                    { courses[index]['short_description'] }
                                 </p>
                             </div>
                             <div className="about-course">
@@ -215,7 +232,7 @@ const CatalogOfCourses = () => {
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
                                 <p>💵 { courses[index]['cost'] }</p>
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
-                                <Link to="" className="enter">Записаться</Link>
+                                <Link to={`${courses[index]['url']}`} className="enter">Записаться</Link>
                             </div>
                         </div>
                     </div>)}

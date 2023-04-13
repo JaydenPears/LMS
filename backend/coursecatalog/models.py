@@ -77,7 +77,7 @@ class Lesson(models.Model):
         ('Четверг', 'Четверг'),
         ('Пятница', 'Пятница'),
         ('Суббота', 'Суббота'),
-        ('Воскресение', 'Воскресение'),
+        ('Воскресенье', 'Воскресенье'),
     ]
     weekday = models.CharField(max_length=500, choices=WEEKDAY_LIST,
                                verbose_name='День недели')

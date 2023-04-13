@@ -42,7 +42,7 @@ def course_view(request, pk):
         'Четверг': 'ЧТ',
         'Пятница': 'ПТ',
         'Суббота': 'СБ',
-        'Воскресение': 'ВС',
+        'Воскресенье': 'ВС',
     }
     res = {'id_course': course.pk, 'type_of_activity': course.department.pk,
            'name': course.name, 'teacher': course.teacher.fio,
