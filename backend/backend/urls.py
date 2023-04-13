@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/get-answer/', views.get_result),
-    path('api/catalog/', course_view.catalog)
+    path('api/catalog/', course_view.catalog),
+    path('api/catalog/<int:pk>/', course_view.course_view)
 ]
 
