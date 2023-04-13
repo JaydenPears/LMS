@@ -20,6 +20,7 @@ function capitalizeFirstLetter(string) {
 
 const CatalogOfCourses = () => {
     const url = `http://127.0.0.1:8000/api/`;
+    const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [settings, setSettings] = useState({});
     const [allCourses, setAllCourses] = useState([]);
     const [courses, setCourses] = useState([])
@@ -44,6 +45,13 @@ const CatalogOfCourses = () => {
 
         getSettings(`${url}`).then(value => {
             setSettings(value);
+        })
+
+        axios.get(
+            `${url}departments-icons/`
+        ).then((response) => {
+            const data = response.data;
+            console.log(data);
         })
     }, [setAllCourses]);
 

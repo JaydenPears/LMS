@@ -8,6 +8,10 @@
     flex-wrap: wrap;
 }
 
+h3 {
+    font-size: 20px;
+}
+
 .naming{
     min-width: 1200px;
     display: flex;
@@ -62,7 +66,7 @@
 }
 
 .activity h1{
-    font-size: 1.5rem;
+    font-size: 28px;
 }
 
 .description{
