@@ -37,7 +37,9 @@ urlpatterns = [
     path('api/catalog/', course_view.catalog),
     path('api/catalog/<int:pk>/', course_view.course_view),
     path('api/activities/', course_view.activities),
-    path('api/addresses/', course_view.addresses)
+    path('api/addresses/', course_view.addresses),
+    path('api/departments-name-dict/', course_view.departments_name_dict),
+    path('api/departments-icons-dict/', course_view.departments_images_dict)
 
 ]
 
