@@ -7,6 +7,7 @@ from coursecatalog.models import Teacher, Course, Lesson, Department, Building
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ('fio', 'photo', )
 
+
 class LessonAdmin(admin.StackedInline):
     model = Lesson
     extra = 1

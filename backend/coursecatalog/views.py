@@ -19,11 +19,23 @@ def catalog(request):
     courses = Course.objects.all()
     for course in courses:
         lessons = Lesson.objects.filter(course=course.pk)
+        WEEKDAYS = [
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота',
+            'Воскресенье'
+        ]
+        #  Это надо убрать отсюада
+        sorted_lessons = [weekday for weekday in WEEKDAYS if weekday in
+                         [lesson.weekday for lesson in lessons]]
         res = {'id_course': course.pk, 'type_of_activity': course.department.pk,
                'name': course.name, 'teacher': course.teacher.fio,
                'address': course.building.address,
                'age_limit': [course.start_class, course.end_class],
-               'schedule': [lesson.weekday for lesson in lessons],
+               'schedule': sorted_lessons,
                'short_description': course.short_description,
                'url': course.link, 'cost': course.financing,
                'format': course.format}
@@ -93,4 +105,22 @@ def addresses(request):
     for building in all_buildings:
         resp[building.pk] = {'label': building.address,
                              'value': building.address}
+    return Response(resp)
+
+
+@api_view(['GET', ])
+def departments_images_dict(request):
+    departments = Department.objects.all()
+    resp = {}
+    for dep in departments:
+        resp[dep.pk] = str(dep.icon)
+    return Response(resp)
+
+
+@api_view(['GET', ])
+def departments_name_dict(request):
+    departments = Department.objects.all()
+    resp = {}
+    for dep in departments:
+        resp[dep.pk] = dep.name
     return Response(resp)
