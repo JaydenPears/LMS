@@ -59,7 +59,7 @@ const CatalogOfCourses = () => {
             const data = response.data;
             settranslateTypeOfActivity({...data});
         });
-    }, [setAllCourses]);
+    }, [setAllCourses, url]);
 
     const convertNum = (strNum) => {
         if (strNum === 3){
