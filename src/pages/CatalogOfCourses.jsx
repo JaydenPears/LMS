@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import MyMultiSelect from "../components/MyMultiSelect";
 import { getSettings } from "../settings_for_filters";
-import {
-    linkForActivityImg, translateTypeOfActivity
-} from "../info_about_course/index.js"
 
 // Import static
 import "../static/styles/CatalogOfCourses.css"
@@ -20,6 +17,8 @@ function capitalizeFirstLetter(string) {
 
 const CatalogOfCourses = () => {
     const url = `http://127.0.0.1:8000/api/`;
+    const url_image = `http://127.0.0.1:8000/media/`;
+    const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [settings, setSettings] = useState({});
     const [allCourses, setAllCourses] = useState([]);
@@ -48,11 +47,18 @@ const CatalogOfCourses = () => {
         })
 
         axios.get(
-            `${url}departments-icons/`
+            `${url}departments-icons-dict/`
         ).then((response) => {
             const data = response.data;
-            console.log(data);
-        })
+            setlinkForActivityImg({...data});
+        });
+
+        axios.get(
+            `${url}departments-name-dict/`
+        ).then((response) => {
+            const data = response.data;
+            settranslateTypeOfActivity({...data});
+        });
     }, [setAllCourses]);
 
     const convertNum = (strNum) => {
@@ -218,7 +224,7 @@ const CatalogOfCourses = () => {
                             <div className="NamingOfCourse">
                                 <img
                                     className=""
-                                    src={ linkForActivityImg[courses[index]['type_of_activity']]}
+                                    src={ `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}` }
                                     alt=""
                                 />
                                 <h3>{ courses[index]['name'] }</h3>
