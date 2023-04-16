@@ -147,8 +147,7 @@ p {
     display: inline;
 }
 
-.intelligence .with-text-decoration,
-.type-of-study .with-text-decoration{
+.with-text-decoration{
     text-decoration: none;
     background-image: linear-gradient(0.25turn, #1677ff 65%, #fff);
     background-repeat: no-repeat;
@@ -158,4 +157,24 @@ p {
 
 .teacher {
     margin: 0px 70px 0px;
+}
+
+.teacher h3{
+    margin-bottom: 5px;
+}
+
+.teacher .photo img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    border: 1px solid #1677ff;
+    margin-right: 10px;
+}
+
+.teacher .layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }

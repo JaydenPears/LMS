@@ -20,6 +20,7 @@ const days = [
 const CourseDescription = () => {
     const url = `http://127.0.0.1:8000/api/`;
     const url_image = `http://127.0.0.1:8000/media/`;
+    const [teacher, setTeacher] = useState({});
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [infoAboutCourse, setInfoAboutCourse] = useState({});
@@ -36,6 +37,12 @@ const CourseDescription = () => {
         ).then((response) => {
             const data = response.data;
             setInfoAboutCourse({...data});
+            axios.get(
+                `${url}teacher/${data["teacher_id"]}/`
+            ).then((response) => {
+                const data_teacher = response.data;
+                setTeacher({"photo": data_teacher["photo"], "name": data_teacher["fio"]});
+            });
         });
 
         axios.get(
@@ -55,6 +62,7 @@ const CourseDescription = () => {
 
     const type_of_activity = infoAboutCourse["type_of_activity"];
     const TITLE = `${infoAboutCourse["name"]}`;
+
     return (
         <div className="CourseDescriptionLayout">
             <Helmet>
@@ -145,7 +153,16 @@ const CourseDescription = () => {
                 <h3>Формат проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["format"] }</p>
             </div>
             <div className="teacher">
-                <h3>Преподаватель: { infoAboutCourse["teacher"] }</h3>
+                <h3>Преподаватель:</h3>
+                <div className="layout">
+                    <div className="photo">
+                        <img src={teacher["photo"] !== undefined
+                            ? `${teacher["photo"]}` 
+                            : ``}
+                        alt=""/>
+                    </div>
+                    <p className="">{ teacher["name"] }</p>
+                </div>
             </div>
         </div>
     );

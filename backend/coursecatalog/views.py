@@ -64,7 +64,7 @@ def course_view(request, pk):
         if WEEKDAY_DICT[key] in schedule:
             sorted_schedule[WEEKDAY_DICT[key]] = schedule[WEEKDAY_DICT[key]].copy()
     res = {'id_course': course.pk, 'type_of_activity': course.department.pk,
-           'name': course.name, 'teacher': course.teacher.fio,
+           'name': course.name, 'teacher_id': course.teacher.id,
            'address': course.building.address,
            'age_limit': [course.start_class, course.end_class],
            'schedule': sorted_schedule.copy(),
