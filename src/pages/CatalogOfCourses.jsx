@@ -207,7 +207,7 @@ const CatalogOfCourses = () => {
             <div className="SearchAndFilter">
                 <input
                     className="SearchInput"
-                    placeholder="Хотите найти конкретный курс?"
+                    placeholder="Поиск курса"
                     type={"text"}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />

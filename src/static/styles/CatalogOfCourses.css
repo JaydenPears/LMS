@@ -18,13 +18,16 @@
 }
 
 .SearchInput {
+    resize: vertical;
     box-sizing: border-box;
-    width: 100%;
+    min-width: 100%;
     padding-left: 20px;
     height: 50px;
     border: 1px solid black;
     border-radius: 30px;
     font-size: 18px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
 }
 
 .SearchInput:hover,
@@ -161,4 +164,3 @@ p{
     background: #ffffff;
     color: #000;
 }
-

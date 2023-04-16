@@ -86,6 +86,7 @@ const CourseDescription = () => {
                     </div>
                 </div>
             </div>
+            <div className="contentLayout">
             <div className="activity">
                 <div className="logo">
                     <img src={linkForActivityImg[type_of_activity] !== undefined
@@ -163,6 +164,7 @@ const CourseDescription = () => {
                     </div>
                     <p className="">{ teacher["name"] }</p>
                 </div>
+            </div>
             </div>
         </div>
     );
