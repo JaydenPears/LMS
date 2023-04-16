@@ -164,11 +164,12 @@ p {
 }
 
 .teacher .photo img{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 5rem;
     border: 1px solid #1677ff;
     margin-right: 10px;
+    object-fit: cover;
 }
 
 .teacher .layout {
@@ -176,5 +177,5 @@ p {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
