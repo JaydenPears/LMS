@@ -11,7 +11,7 @@ root.render(
 			<App />
 		</BrowserView>
 		<MobileView>
-			<h1 style={{color: "black"}}>
+			<h1 style={{color: "#626d7a", textAlign: "center", lineHeight: "22px", fontSize: "20px"}}>
 				Мобильная версия сайта находится в разработке. Приносим извинения за ожидание.
 			</h1>
 		</MobileView>
