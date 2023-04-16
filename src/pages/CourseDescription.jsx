@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import {
-    linkForActivityImg, translateTypeOfActivity
-} from "../info_about_course/index.js"
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -22,6 +19,8 @@ const days = [
 
 const CourseDescription = () => {
     const url = `http://127.0.0.1:8000/api/`;
+    const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
+    const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [infoAboutCourse, setInfoAboutCourse] = useState({});
     const location = useLocation();
 
@@ -30,11 +29,26 @@ const CourseDescription = () => {
 
     useEffect(() => {
        window.scrollTo(0, 0);
+       
        axios.get(
         `${url}catalog/${id_course}/`
         ).then((response) => {
             const data = response.data;
             setInfoAboutCourse({...data});
+        });
+
+        axios.get(
+            `${url}departments-icons-dict/`
+        ).then((response) => {
+            const data = response.data;
+            setlinkForActivityImg({...data});
+        });
+
+        axios.get(
+            `${url}departments-name-dict/`
+        ).then((response) => {
+            const data = response.data;
+            settranslateTypeOfActivity({...data});
         });
     }, [id_course, url]);
 

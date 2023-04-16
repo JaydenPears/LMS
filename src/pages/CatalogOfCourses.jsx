@@ -70,11 +70,11 @@ const CatalogOfCourses = () => {
         }
     }
 
-    const [activityFilter, setActivityFilter] = useState([])
-    const [adressFilter, setAdressFilter] = useState([])
-    const [ageLimitFilter, setAgeLimitFilter] = useState([])
-    const [scheduleFilter, setScheduleFilter] = useState([])
-    const [costFilter, setCostFilter] = useState([])
+    const [activityFilter, setActivityFilter] = useState([]);
+    const [adressFilter, setAdressFilter] = useState([]);
+    const [ageLimitFilter, setAgeLimitFilter] = useState([]);
+    const [scheduleFilter, setScheduleFilter] = useState([]);
+    const [costFilter, setCostFilter] = useState([]);
 
     const setFilters = [setActivityFilter, setAdressFilter, setAgeLimitFilter, setScheduleFilter, setCostFilter];
 
