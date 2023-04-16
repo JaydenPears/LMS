@@ -61,7 +61,7 @@ p {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin: 40px 70px 0px;
+    margin: 20px 70px 20px;
 }
 
 .activity .logo img{
@@ -84,7 +84,7 @@ p {
 }
 
 .schedule{
-    margin: 0px 70px 10px;
+    margin: 0px 70px 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -136,11 +136,11 @@ p {
 }
 
 .intelligence{
-    margin: 0px 70px 10px;
+    margin: 0px 70px 15px;
 }
 
 .type-of-study{
-    margin: 0px 70px 10px;
+    margin: 0px 70px 15px;
 }
 
 .intelligence h3, .intelligence p, .type-of-study h3, .type-of-study p{
