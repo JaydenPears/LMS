@@ -19,6 +19,7 @@ const days = [
 
 const CourseDescription = () => {
     const url = `http://127.0.0.1:8000/api/`;
+    const url_image = `http://127.0.0.1:8000/media/`;
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [infoAboutCourse, setInfoAboutCourse] = useState({});
@@ -29,7 +30,7 @@ const CourseDescription = () => {
 
     useEffect(() => {
        window.scrollTo(0, 0);
-       
+
        axios.get(
         `${url}catalog/${id_course}/`
         ).then((response) => {
@@ -79,7 +80,10 @@ const CourseDescription = () => {
             </div>
             <div className="activity">
                 <div className="logo">
-                    <img src={ linkForActivityImg[type_of_activity] } alt=""/>
+                    <img src={linkForActivityImg[type_of_activity] !== undefined
+                        ? `${url_image}${linkForActivityImg[type_of_activity]}` 
+                        : ``}
+                    alt=""/>
                 </div>
                 <div className="name-of-activity">
                     <h1>
@@ -101,23 +105,47 @@ const CourseDescription = () => {
                             <h3>
                                 {days[index]}
                             </h3>
-                            <div className="card">
-                                <p align="center">
-                                    17:30<br/>-<br/>18:30
-                                </p>
-                            </div>
+                            {infoAboutCourse['schedule'] !== undefined
+                                ?
+                                <>
+                                    {days[index] in infoAboutCourse["schedule"]
+                                    ?
+                                        <div className="card">
+                                            <p align="center">
+                                                { infoAboutCourse["schedule"][days[index]][0] }
+                                                <br/>-<br/>
+                                                { infoAboutCourse["schedule"][days[index]][1] }
+                                            </p>
+                                        </div>
+                                    :
+                                        <div className="card" style={{background:"#b8b8b8"}}>
+                                            <p align="center">
+                                                -
+                                            </p>
+                                        </div>
+                                    }
+                                </>
+                                :
+                                <div className="card">
+                                    <p align="center">
+                                        00:00
+                                        <br/>-<br/>
+                                        00:00
+                                    </p>
+                                </div>
+                            }
                         </div>
                     )}
                 </div>
             </div>
             <div className="intelligence">
-                <h3>Адрес проведения: </h3><h3 className="with-text-decoration">{infoAboutCourse["address"]}</h3>
+                <h3>Адрес проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["address"] }</p>
             </div>
             <div className="type-of-study">
-                <h3>Формат проведения: </h3><h3 className="with-text-decoration">Очные занятия</h3>
+                <h3>Формат проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["format"] }</p>
             </div>
             <div className="teacher">
-        
+                <h3>Преподаватель: { infoAboutCourse["teacher"] }</h3>
             </div>
         </div>
     );

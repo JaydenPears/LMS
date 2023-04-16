@@ -10,6 +10,11 @@
 
 h3 {
     font-size: 20px;
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
 }
 
 .naming{
@@ -70,7 +75,7 @@ h3 {
 }
 
 .description{
-    margin: 20px 70px 0px;
+    margin: 0px 70px 20px;
     max-width: 60rem;
 }
 
@@ -79,7 +84,7 @@ h3 {
 }
 
 .schedule{
-    margin: 20px 70px 0px;
+    margin: 0px 70px 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -127,17 +132,18 @@ h3 {
     margin: 0;
     color: white;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .intelligence{
-    margin: 20px 70px 0px;
+    margin: 0px 70px 10px;
 }
 
 .type-of-study{
-    margin: 10px 70px 0px;
+    margin: 0px 70px 10px;
 }
 
-.intelligence h3, .type-of-study h3{
+.intelligence h3, .intelligence p, .type-of-study h3, .type-of-study p{
     display: inline;
 }
 
@@ -148,4 +154,8 @@ h3 {
     background-repeat: no-repeat;
 	background-position: center bottom 1px;
 	background-size: 100% 2px;
+}
+
+.teacher {
+    margin: 0px 70px 0px;
 }

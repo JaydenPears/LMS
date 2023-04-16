@@ -224,7 +224,10 @@ const CatalogOfCourses = () => {
                             <div className="NamingOfCourse">
                                 <img
                                     className=""
-                                    src={ `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}` }
+                                    src={ linkForActivityImg[courses[index]['type_of_activity']] !== undefined
+                                        ? `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}`
+                                        : ``
+                                    }
                                     alt=""
                                 />
                                 <h3>{ courses[index]['name'] }</h3>

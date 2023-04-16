@@ -56,12 +56,18 @@ def course_view(request, pk):
         'Суббота': 'СБ',
         'Воскресенье': 'ВС',
     }
+    schedule = dict()
+    for lesson in lessons:
+        schedule[WEEKDAY_DICT[lesson.weekday]] = [lesson.start_time, lesson.end_time]
+    sorted_schedule = dict()
+    for key in WEEKDAY_DICT:
+        if WEEKDAY_DICT[key] in schedule:
+            sorted_schedule[WEEKDAY_DICT[key]] = schedule[WEEKDAY_DICT[key]].copy()
     res = {'id_course': course.pk, 'type_of_activity': course.department.pk,
            'name': course.name, 'teacher': course.teacher.fio,
            'address': course.building.address,
            'age_limit': [course.start_class, course.end_class],
-           'schedule': [{WEEKDAY_DICT[lesson.weekday]: [lesson.start_time, lesson.end_time]}
-                        for lesson in lessons],
+           'schedule': sorted_schedule.copy(),
            'short_description': course.short_description,
            'full_description': course.long_description,
            'url': course.link, 'cost': course.financing,
