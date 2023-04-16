@@ -10,7 +10,7 @@ root.render(
 		<BrowserView>
 			<App />
 		</BrowserView>
-		<MobileView>
+		<MobileView style={{display: "flex", alignContent: "center", justifyContent: "center"}}>
 			<h1 style={{color: "#626d7a", textAlign: "center", lineHeight: "22px", fontSize: "20px"}}>
 				Мобильная версия сайта находится в разработке. Приносим извинения за ожидание.
 			</h1>
