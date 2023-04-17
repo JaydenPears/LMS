@@ -8,12 +8,10 @@ import { useLocation } from 'react-router-dom';
 
 const { Header, Footer } = Layout;
 const infoForNavbar = ["О нас",
-						"Контакты",
-						"Войти в LMS"];
+						"Контакты"];
 
 const pathForNavbar = ["/about",
-					   "/contacts",
-					   "/auth_user"]
+					   "/contacts"]
 
 
 function App() {
