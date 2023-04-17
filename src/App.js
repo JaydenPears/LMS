@@ -45,7 +45,7 @@ function App() {
 					overflowedIndicator={true}
 					selectedKeys={selectedKeys[0]}
 					onClick={redirect}
-					items={new Array(4).fill(null).map((_, index) => {
+					items={new Array(infoForNavbar.length).fill(null).map((_, index) => {
 						const key = index;
 						return {
 						key,
