@@ -29,11 +29,9 @@ p {
 .contentLayout {
     display: flex;
     flex-direction: column;
-    min-width: 90%;
     align-items: flex-start;
     flex-wrap: wrap;
     align-content: flex-start;
-    min-width: 80%;
 }
 
 .naming .logo{
@@ -188,4 +186,29 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+}
+
+a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-right: 10px;
+    transition: 0.5s;
+    background: #858484;
+}
+
+.enter{
+    background: #1677ff;
+}
+
+a:hover {
+    background: #ffffff;
+    color: #000;
 }

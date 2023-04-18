@@ -11,13 +11,15 @@ import "../static/styles/CatalogOfCourses.css"
 
 const TITLE = "Каталог курсов ГБОУ \"Образовательный центр \"Протон\"";
 
+axios.defaults.baseURL = '';
+
 function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
 }
 
 const CatalogOfCourses = () => {
-    const url = `http://127.0.0.1:8000/api/`;
-    const url_image = `http://127.0.0.1:8000/media/`;
+    const url = `http://90.156.209.157:8000/api/`;
+    const url_image = `http://90.156.209.157:8000/media/`;
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [settings, setSettings] = useState({});
