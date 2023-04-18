@@ -188,7 +188,9 @@ p {
     margin-bottom: 10px;
 }
 
-a {
+.contentLayout a {
+    margin-left: 70px;
+    margin-bottom: 10px;
     font-size: 1.2rem;
     font-weight: 500;
     position: relative;
@@ -204,11 +206,11 @@ a {
     background: #858484;
 }
 
-.enter{
+.contentLayout .enter{
     background: #1677ff;
 }
 
-a:hover {
+.contentLayout a:hover {
     background: #ffffff;
     color: #000;
 }
