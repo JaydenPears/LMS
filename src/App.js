@@ -7,11 +7,17 @@ import { Layout, Menu } from 'antd';
 import { useLocation } from 'react-router-dom';
 
 const { Header, Footer } = Layout;
-const infoForNavbar = ["О нас",
-						"Контакты"];
+const infoForNavbar = [
+	"Каталог курсов",
+	"О нас",
+	"Контакты"
+];
 
-const pathForNavbar = ["/about",
-					   "/contacts"]
+const pathForNavbar = [
+	"",
+	"/about",
+	"/contacts"
+];
 
 
 function App() {
@@ -36,7 +42,7 @@ function App() {
 			<Layout className="layout" style={{minHeight: "100%"}}>
 				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }}>
 					<div className="logo">
-						<Link className="MainPageLink" to="">Каталог курсов</Link>
+						<Link className="MainPageLink" to="">LMS</Link>
 					</div>
 					<Menu
 					theme="dark"
