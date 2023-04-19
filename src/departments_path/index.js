@@ -7,9 +7,9 @@ import Icon06 from "../static/imgs/department_icons/06.png"
 
 export const pathForIcon = {
     1: Icon01,
-    2: Icon02,
-    3: Icon03,
-    4: Icon04,
-    5: Icon05,
-    6: Icon06
+    3: Icon02,
+    4: Icon03,
+    5: Icon04,
+    6: Icon05,
+    7: Icon06
 }

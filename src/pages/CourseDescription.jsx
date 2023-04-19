@@ -169,13 +169,28 @@ const CourseDescription = () => {
                         </div>
                         <div className="about-teacher">
                             <p className="">{ teacher["name"] }</p>
-                            <Link to={linksProton[teacher['name']]} className="detail-link">Подробнее об учителе</Link>
+                            <Link
+                                target={"_blank"}
+                                rel="noopener noreferrer"
+                                to={linksProton[teacher['name']]}
+                                className="detail-link"
+                            >
+                                Подробнее об учителе
+                            </Link>
                         </div>
                     </div>
                 </div>
                 {infoAboutCourse['url'] === 'http://123.com'
                     ? <Link to="" disabled className="closed">Запись закрыта</Link>
-                    : <Link to={`${infoAboutCourse['url']}`} className="enter">Записаться</Link>
+                    :
+                    <Link
+                        to={`${infoAboutCourse['url']}`}
+                        className="enter"
+                        target={"_blank"}
+                        rel="noopener noreferrer"
+                    >
+                        Записаться
+                    </Link>
                 }
             </div>
         </div>

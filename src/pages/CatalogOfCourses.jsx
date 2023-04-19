@@ -254,7 +254,15 @@ const CatalogOfCourses = () => {
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
                                 {courses[index]['url'] === 'http://123.com'
                                     ? <Link to={``} disabled className="closed">Запись закрыта</Link>
-                                    : <Link to={`${courses[index]['url']}`} className="enter">Записаться</Link>
+                                    :
+                                    <Link
+                                        target={"_blank"}
+                                        rel="noopener noreferrer"
+                                        to={`${courses[index]['url']}`}
+                                        className="enter"
+                                    >
+                                        Записаться
+                                    </Link>
                                 }
                             </div>
                         </div>
