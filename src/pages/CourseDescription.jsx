@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import {pathTeacherPhoto} from '../teachers_photos_nav/index'
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -159,10 +160,10 @@ const CourseDescription = () => {
                     <h3>Преподаватель:</h3>
                     <div className="layout">
                         <div className="photo">
-                            <img src={teacher["photo"] !== undefined
-                                ? `${teacher["photo"]}` 
-                                : ``}
-                            alt=""/>
+                            {teacher["photo"] !== undefined
+                                ? <img src={pathTeacherPhoto[teacher["name"]]} alt=""/>
+                                : <img src="" alt=""/>
+                            }
                         </div>
                         <p className="">{ teacher["name"] }</p>
                     </div>
