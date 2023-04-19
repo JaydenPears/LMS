@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import MyMultiSelect from "../components/MyMultiSelect";
 import { getSettings } from "../settings_for_filters";
+import {pathForIcon} from "../departments_path/index"
 
 // Import static
 import "../static/styles/CatalogOfCourses.css"
@@ -227,7 +228,7 @@ const CatalogOfCourses = () => {
                                 <img
                                     className=""
                                     src={ linkForActivityImg[courses[index]['type_of_activity']] !== undefined
-                                        ? `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}`
+                                        ? pathForIcon[courses[index]['type_of_activity']]
                                         : ``
                                     }
                                     alt=""

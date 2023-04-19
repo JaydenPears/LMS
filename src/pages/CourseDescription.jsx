@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import {pathTeacherPhoto} from '../teachers_photos_nav/index'
+import {pathForIcon} from "../departments_path/index"
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -92,10 +93,10 @@ const CourseDescription = () => {
             <div className="contentLayout">
                 <div className="activity">
                     <div className="logo">
-                        <img src={linkForActivityImg[type_of_activity] !== undefined
-                            ? `${url_image}${linkForActivityImg[type_of_activity]}` 
-                            : ``}
-                        alt=""/>
+                            {linkForActivityImg[type_of_activity] !== undefined
+                                ? <img src={pathForIcon[type_of_activity]} alt=""/>
+                                : <img src="" alt=""/>
+                            }
                     </div>
                     <div className="name-of-activity">
                         <h1>
@@ -168,7 +169,10 @@ const CourseDescription = () => {
                         <p className="">{ teacher["name"] }</p>
                     </div>
                 </div>
-                <Link to={`${infoAboutCourse['url']}`} className="enter">Записаться</Link>
+                {infoAboutCourse['url'] === 'http://123.com'
+                    ? <Link to="" disabled className="closed">Запись закрыта</Link>
+                    : <Link to={`${infoAboutCourse['url']}`} className="enter">Записаться</Link>
+                }
             </div>
         </div>
     );
