@@ -32,7 +32,7 @@ p {
     align-items: flex-start;
     flex-wrap: wrap;
     align-content: flex-start;
-    width: 85vw;
+    width: 70vw;
 }
 
 .naming .logo{
@@ -189,6 +189,13 @@ p {
     margin-bottom: 10px;
 }
 
+.about-teacher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .contentLayout a {
     margin-left: 70px;
     margin-bottom: 10px;
@@ -205,8 +212,14 @@ p {
     background: #858484;
 }
 
-.contentLayout .enter{
+.contentLayout .enter, .contentLayout .detail-link {
     background: #1677ff;
+}
+
+.contentLayout .detail-link {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 1.1rem;
 }
 
 .contentLayout a:hover {

@@ -252,7 +252,10 @@ const CatalogOfCourses = () => {
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
                                 <p>💵 { courses[index]['cost'] }</p>
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
-                                <Link to={`${courses[index]['url']}`} className="enter">Записаться</Link>
+                                {courses[index]['url'] === 'http://123.com'
+                                    ? <Link to={``} disabled className="closed">Запись закрыта</Link>
+                                    : <Link to={`${courses[index]['url']}`} className="enter">Записаться</Link>
+                                }
                             </div>
                         </div>
                     </div>)}

@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import {pathTeacherPhoto} from '../teachers_photos_nav/index'
 import {pathForIcon} from "../departments_path/index"
+import {linksProton} from '../teachers_link/index'
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -166,7 +167,10 @@ const CourseDescription = () => {
                                 : <img src="" alt=""/>
                             }
                         </div>
-                        <p className="">{ teacher["name"] }</p>
+                        <div className="about-teacher">
+                            <p className="">{ teacher["name"] }</p>
+                            <Link to={linksProton[teacher['name']]} className="detail-link">Подробнее об учителе</Link>
+                        </div>
                     </div>
                 </div>
                 {infoAboutCourse['url'] === 'http://123.com'
