@@ -244,7 +244,7 @@ const CatalogOfCourses = () => {
                                 <p>👨‍🏫 { courses[index]['teacher'] }</p>
                                 <p>🏢 { courses[index]['address'] }</p>
                                 <p>🧒
-                                {courses[index]['age_limit'].length === 1
+                                {courses[index]['age_limit'][0] === courses[index]['age_limit'][1]
                                     ? ` ${convertNum(courses[index]['age_limit'][0])} классы`
                                     : ` ${courses[index]['age_limit'][0]}-${courses[index]['age_limit'][1]} классы`
                                 }
