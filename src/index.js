@@ -8,7 +8,6 @@ import Favicon from 'react-favicon';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<BrowserRouter>
-		<Favicon url="static/favicon.ico"/>
 		<BrowserView>
 			<App />
 		</BrowserView>
