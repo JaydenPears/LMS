@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import {pathTeacherPhoto} from '../teachers_photos_nav/index'
-import {pathForIcon} from "../departments_path/index"
 import {linksProton} from '../teachers_link/index'
 
 // static imports
@@ -95,7 +93,11 @@ const CourseDescription = () => {
                 <div className="activity">
                     <div className="logo">
                             {linkForActivityImg[type_of_activity] !== undefined
-                                ? <img src={pathForIcon[type_of_activity]} alt=""/>
+                                ?
+                                <img
+                                    src={`${url_image}${linkForActivityImg[type_of_activity]}`}
+                                    alt=""
+                                />
                                 : <img src="" alt=""/>
                             }
                     </div>

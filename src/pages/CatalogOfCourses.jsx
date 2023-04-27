@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import MyMultiSelect from "../components/MyMultiSelect";
 import { getSettings } from "../settings_for_filters";
-import {pathForIcon} from "../departments_path/index"
 
 // Import static
 import "../static/styles/CatalogOfCourses.css"
