@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import MyMultiSelect from "../components/MyMultiSelect";
 import { getSettings } from "../settings_for_filters";
+import {pathForIcon} from "../departments_path/index"
 
 // Import static
 import "../static/styles/CatalogOfCourses.css"
@@ -227,7 +228,7 @@ const CatalogOfCourses = () => {
                                 <img
                                     className=""
                                     src={ linkForActivityImg[courses[index]['type_of_activity']] !== undefined
-                                        ? `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}`
+                                        ? pathForIcon[courses[index]['type_of_activity']]
                                         : ``
                                     }
                                     alt=""
@@ -243,7 +244,7 @@ const CatalogOfCourses = () => {
                                 <p>👨‍🏫 { courses[index]['teacher'] }</p>
                                 <p>🏢 { courses[index]['address'] }</p>
                                 <p>🧒
-                                {courses[index]['age_limit'].length === 1
+                                {courses[index]['age_limit'][0] === courses[index]['age_limit'][1]
                                     ? ` ${convertNum(courses[index]['age_limit'][0])} классы`
                                     : ` ${courses[index]['age_limit'][0]}-${courses[index]['age_limit'][1]} классы`
                                 }
@@ -251,7 +252,18 @@ const CatalogOfCourses = () => {
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
                                 <p>💵 { courses[index]['cost'] }</p>
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
-                                <Link to={`${courses[index]['url']}`} className="enter">Записаться</Link>
+                                {courses[index]['url'] === 'http://123.com'
+                                    ? <Link to={``} disabled className="closed">Запись закрыта</Link>
+                                    :
+                                    <Link
+                                        target={"_blank"}
+                                        rel="noopener noreferrer"
+                                        to={`${courses[index]['url']}`}
+                                        className="enter"
+                                    >
+                                        Записаться
+                                    </Link>
+                                }
                             </div>
                         </div>
                     </div>)}

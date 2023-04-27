@@ -7,11 +7,17 @@ import { Layout, Menu } from 'antd';
 import { useLocation } from 'react-router-dom';
 
 const { Header, Footer } = Layout;
-const infoForNavbar = ["О нас",
-						"Контакты"];
+const infoForNavbar = [
+	"Каталог курсов",
+	"О нас",
+	"Контакты"
+];
 
-const pathForNavbar = ["/about",
-					   "/contacts"]
+const pathForNavbar = [
+	"",
+	"/about",
+	"/contacts"
+];
 
 
 function App() {

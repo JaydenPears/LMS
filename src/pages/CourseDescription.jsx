@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import {pathTeacherPhoto} from '../teachers_photos_nav/index'
+import {pathForIcon} from "../departments_path/index"
+import {linksProton} from '../teachers_link/index'
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -91,10 +94,10 @@ const CourseDescription = () => {
             <div className="contentLayout">
                 <div className="activity">
                     <div className="logo">
-                        <img src={linkForActivityImg[type_of_activity] !== undefined
-                            ? `${url_image}${linkForActivityImg[type_of_activity]}` 
-                            : ``}
-                        alt=""/>
+                            {linkForActivityImg[type_of_activity] !== undefined
+                                ? <img src={pathForIcon[type_of_activity]} alt=""/>
+                                : <img src="" alt=""/>
+                            }
                     </div>
                     <div className="name-of-activity">
                         <h1>
@@ -159,15 +162,36 @@ const CourseDescription = () => {
                     <h3>Преподаватель:</h3>
                     <div className="layout">
                         <div className="photo">
-                            <img src={teacher["photo"] !== undefined
-                                ? `${teacher["photo"]}` 
-                                : ``}
-                            alt=""/>
+                            {teacher["photo"] !== undefined
+                                ? <img src={pathTeacherPhoto[teacher["name"]]} alt=""/>
+                                : <img src="" alt=""/>
+                            }
                         </div>
-                        <p className="">{ teacher["name"] }</p>
+                        <div className="about-teacher">
+                            <p className="">{ teacher["name"] }</p>
+                            <Link
+                                target={"_blank"}
+                                rel="noopener noreferrer"
+                                to={linksProton[teacher['name']]}
+                                className="detail-link"
+                            >
+                                Подробнее об учителе
+                            </Link>
+                        </div>
                     </div>
                 </div>
-                <Link to={`${infoAboutCourse['url']}`} className="enter">Записаться</Link>
+                {infoAboutCourse['url'] === 'http://123.com'
+                    ? <Link to="" disabled className="closed">Запись закрыта</Link>
+                    :
+                    <Link
+                        to={`${infoAboutCourse['url']}`}
+                        className="enter"
+                        target={"_blank"}
+                        rel="noopener noreferrer"
+                    >
+                        Записаться
+                    </Link>
+                }
             </div>
         </div>
     );
