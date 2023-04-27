@@ -20,8 +20,8 @@ const days = [
 ]
 
 const CourseDescription = () => {
-    const url = `http://90.156.209.157:8000/api/`;
-    const url_image = `http://90.156.209.157:8000/media/`;
+    const url = `http://admin.protonmos.ru/api/`;
+    const url_image = `http://admin.protonmos.ru/media/`;
     const [teacher, setTeacher] = useState({});
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
