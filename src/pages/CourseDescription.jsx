@@ -163,7 +163,7 @@ const CourseDescription = () => {
                     <div className="layout">
                         <div className="photo">
                             {teacher["photo"] !== undefined
-                                ? <img src={pathTeacherPhoto[teacher["name"]]} alt=""/>
+                                ? <img src={teacher["photo"]} alt=""/>
                                 : <img src="" alt=""/>
                             }
                         </div>

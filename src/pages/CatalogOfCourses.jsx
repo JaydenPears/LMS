@@ -228,7 +228,7 @@ const CatalogOfCourses = () => {
                                 <img
                                     className=""
                                     src={ linkForActivityImg[courses[index]['type_of_activity']] !== undefined
-                                        ? pathForIcon[courses[index]['type_of_activity']]
+                                        ? `${url_image}${linkForActivityImg[courses[index]['type_of_activity']]}`
                                         : ``
                                     }
                                     alt=""
