@@ -5,7 +5,7 @@ from coursecatalog.models import Teacher, Course, Lesson, Department, Building
 
 # Register your models here.
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('fio', 'photo', )
+    list_display = ('fio', 'photo', 'url')
 
 
 class LessonAdmin(admin.StackedInline):

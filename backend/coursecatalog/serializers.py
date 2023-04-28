@@ -30,4 +30,4 @@ class BuildingSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ('id', 'fio', 'photo')
+        fields = ('id', 'fio', 'photo', 'url')

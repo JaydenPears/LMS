@@ -5,6 +5,7 @@ from django.db import models
 class Teacher(models.Model):
     fio = models.CharField(max_length=10000)
     photo = models.ImageField(upload_to='teachers_photos/')
+    url = models.URLField(verbose_name='Ссылка на страницу учителя')
 
     def __str__(self):
         return self.fio
