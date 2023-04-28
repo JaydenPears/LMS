@@ -9,6 +9,10 @@ class Teacher(models.Model):
     def __str__(self):
         return self.fio
 
+    class Meta:
+        verbose_name = 'Учитель'
+        verbose_name_plural = "Учителя"
+
 
 class Building(models.Model):
     address = models.CharField(max_length=500, verbose_name='Адрес')
@@ -18,6 +22,7 @@ class Building(models.Model):
 
     class Meta:
         verbose_name = 'Здание'
+        verbose_name_plural = "Здания"
 
 
 class Department(models.Model):
@@ -30,6 +35,7 @@ class Department(models.Model):
 
     class Meta:
         verbose_name = 'Направленность'
+        verbose_name_plural = "Направленности"
 
 
 class Course(models.Model):
@@ -67,6 +73,7 @@ class Course(models.Model):
 
     class Meta:
         verbose_name = 'Курс'
+        verbose_name_plural = "Курсы"
 
 
 class Lesson(models.Model):
@@ -96,5 +103,9 @@ class Lesson(models.Model):
         #raise ValidationError("Время занятия введено некорректно")
         return cleaned_data
 
+    def __str__(self):
+        return self.weekday
+
     class Meta:
         verbose_name = 'Занятие'
+        verbose_name_plural = "Занятия"
