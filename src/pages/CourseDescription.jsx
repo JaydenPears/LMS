@@ -92,14 +92,14 @@ const CourseDescription = () => {
             <div className="contentLayout">
                 <div className="activity">
                     <div className="logo">
+                        <img
+                            src=
                             {linkForActivityImg[type_of_activity] !== undefined
-                                ?
-                                <img
-                                    src={`${url_image}${linkForActivityImg[type_of_activity]}`}
-                                    alt=""
-                                />
-                                : <img src="" alt=""/>
+                                ? `${url_image}${linkForActivityImg[type_of_activity]}`
+                                : ``
                             }
+                            alt=""
+                        />
                     </div>
                     <div className="name-of-activity">
                         <h1>
