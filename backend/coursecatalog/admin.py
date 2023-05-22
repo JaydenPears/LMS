@@ -30,3 +30,6 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Building, BuildingAdmin)
+
+admin.site.site_header = 'Каталог курсов'
+

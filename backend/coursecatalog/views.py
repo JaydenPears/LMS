@@ -37,7 +37,7 @@ def catalog(request):
                'age_limit': [course.start_class, course.end_class],
                'schedule': sorted_lessons,
                'short_description': course.short_description,
-               'url': course.link, 'cost': course.financing,
+               'url': course.link, 'cost': [course.financing, course.cost],
                'format': course.format}
         response.append(res)
     return Response(response)
