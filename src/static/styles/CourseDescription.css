@@ -144,15 +144,11 @@ p {
     font-size: 16px;
 }
 
-.intelligence{
+.intelligence, .type-of-study, .cost{
     margin: 0px 70px 15px;
 }
 
-.type-of-study{
-    margin: 0px 70px 15px;
-}
-
-.intelligence h3, .intelligence p, .type-of-study h3, .type-of-study p{
+.intelligence h3, .intelligence p, .type-of-study h3, .type-of-study p, .cost h3, .cost p{
     display: inline;
 }
 

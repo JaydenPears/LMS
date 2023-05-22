@@ -20,6 +20,13 @@ const days = [
     "ВС"
 ]
 
+const getCost = (data) => {
+    if (data[0] === 'Платно'){
+        return `${data[1]} рублей за занятие`
+    }
+    return data[0]
+}
+
 const CourseDescription = () => {
     const url = `http://admin.protonmos.ru/api/`;
     const url_image = `http://admin.protonmos.ru/media/`;
@@ -162,12 +169,10 @@ const CourseDescription = () => {
                 </div>
                 <div className="cost">
                     <h3>Стоимость занятий: </h3>
-                    <p className="with-text-decoration">
-                        {infoAboutCourse["cost"][0] === 'Платно'
-                            ? `${infoAboutCourse["cost"][1]} рублей за занятие`
-                            : infoAboutCourse["cost"][0]
-                        }
-                    </p>
+                    {infoAboutCourse['cost'] === undefined
+                        ? <p className="with-text-decoration">Цена отсутствует</p>
+                        : <p className="with-text-decoration">{getCost(infoAboutCourse['cost'])}</p>
+                    }
                 </div>
                 <div className="teacher">
                     <h3>Преподаватель:</h3>
