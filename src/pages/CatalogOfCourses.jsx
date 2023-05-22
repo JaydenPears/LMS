@@ -250,7 +250,7 @@ const CatalogOfCourses = () => {
                                 </p>
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
                                 {courses[index]['cost'][0] === 'Платно'
-                                    ? <p>💵 { courses[index]['cost'][1] }</p>
+                                    ? <p>💵 { `${courses[index]['cost'][1]} рублей за занятие` }</p>
                                     : <p>💵 { courses[index]['cost'][0] }</p>
                                 }
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>

@@ -119,7 +119,7 @@ p{
 
 .CardsContainer .card .description {
     word-break: break-word;
-    max-width: 485px;
+    width: 485px;
     font-size: 5rem;
     margin: 0;
     min-height: 40%;

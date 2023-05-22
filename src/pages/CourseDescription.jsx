@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import {linksProton} from '../teachers_link/index'
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -51,7 +50,7 @@ const CourseDescription = () => {
                 `${url}teacher/${data["teacher_id"]}/`
             ).then((response) => {
                 const data_teacher = response.data;
-                setTeacher({"photo": data_teacher["photo"], "name": data_teacher["fio"]});
+                setTeacher({"photo": data_teacher["photo"], "name": data_teacher["fio"], "url": data_teacher['url']});
             });
         });
 
@@ -188,7 +187,7 @@ const CourseDescription = () => {
                             <Link
                                 target={"_blank"}
                                 rel="noopener noreferrer"
-                                to={linksProton[teacher['name']]}
+                                to={teacher['url']}
                                 className="detail-link"
                             >
                                 Подробнее об учителе
