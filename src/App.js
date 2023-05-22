@@ -9,14 +9,10 @@ import { useLocation } from 'react-router-dom';
 const { Header, Footer } = Layout;
 const infoForNavbar = [
 	"Каталог курсов",
-	"О нас",
-	"Контакты"
 ];
 
 const pathForNavbar = [
 	"",
-	"/about",
-	"/contacts"
 ];
 
 
@@ -41,8 +37,8 @@ function App() {
 		<div className="AppDiv">
 			<Layout className="layout" style={{minHeight: "100%"}}>
 				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }}>
-					<div className="logo">
-						<Link className="MainPageLink" to="">LMS</Link>
+					<div className="logo" style={{whiteSpace: "nowrap", width: "auto", fontSize: "42px"}}>
+						<Link className="MainPageLink" to="">Каталог курсов</Link>
 					</div>
 					<Menu
 					theme="dark"

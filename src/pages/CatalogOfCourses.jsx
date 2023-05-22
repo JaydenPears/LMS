@@ -68,7 +68,7 @@ const CatalogOfCourses = () => {
             return `${strNum}-и`
         }
         else{
-            return `${strNum}-ые`
+            return `${strNum}`
         }
     }
 
@@ -140,7 +140,7 @@ const CatalogOfCourses = () => {
             else{
                 count++;
             }
-            let courseCost = capitalizeFirstLetter(item["cost"])
+            let courseCost = capitalizeFirstLetter(item["cost"][0])
             if (costFilter.length !== 0){
                 if (costFilter.includes(courseCost)){
                     count++;
