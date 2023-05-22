@@ -170,7 +170,7 @@ const CourseDescription = () => {
                 <div className="cost">
                     <h3>Стоимость занятий: </h3>
                     {infoAboutCourse['cost'] === undefined
-                        ? <p className="with-text-decoration">Цена отсутствует</p>
+                        ? <p className="with-text-decoration"></p>
                         : <p className="with-text-decoration">{getCost(infoAboutCourse['cost'])}</p>
                     }
                 </div>
