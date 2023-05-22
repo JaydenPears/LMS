@@ -71,7 +71,8 @@ def course_view(request, pk):
            'schedule': sorted_schedule.copy(),
            'short_description': course.short_description,
            'full_description': course.long_description,
-           'url': course.link, 'cost': course.financing,
+           'url': course.link, 'cost': [course.financing, course.cost],
+           'is_open': course.is_active,
            'format': course.format}
     return Response(res)
 

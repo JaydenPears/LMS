@@ -62,7 +62,7 @@ class Course(models.Model):
     financing = models.CharField(max_length=100, choices=FINANCING_TYPES,
                                    verbose_name='Финансирование')
     cost = models.CharField(max_length=100, verbose_name='Стоимость')
-    link = models.URLField(verbose_name='Ссылка на курс')
+    link = models.URLField(verbose_name='Ссылка на курс', blank=True)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE,
                                 verbose_name='Учитель')
     department = models.ForeignKey(Department, on_delete=models.CASCADE,
