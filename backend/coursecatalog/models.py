@@ -71,6 +71,7 @@ class Course(models.Model):
                                    verbose_name='Здание')
     format = models.CharField(max_length=100, choices=FORMAT_TYPES,
                                    verbose_name='Формат проведения')
+    is_active = models.BooleanField(verbose_name='Запись открыта')
 
 
     class Meta:

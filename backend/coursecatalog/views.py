@@ -38,6 +38,7 @@ def catalog(request):
                'schedule': sorted_lessons,
                'short_description': course.short_description,
                'url': course.link, 'cost': [course.financing, course.cost],
+               'is_open': course.is_active,
                'format': course.format}
         response.append(res)
     return Response(response)
