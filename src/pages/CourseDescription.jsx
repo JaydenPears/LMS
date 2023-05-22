@@ -160,6 +160,15 @@ const CourseDescription = () => {
                 <div className="type-of-study">
                     <h3>Формат проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["format"] }</p>
                 </div>
+                <div className="cost">
+                    <h3>Стоимость занятий: </h3>
+                    <p className="with-text-decoration">
+                        {infoAboutCourse["cost"][0] === 'Платно'
+                            ? `${infoAboutCourse["cost"][1]} рублей за занятие`
+                            : infoAboutCourse["cost"][0]
+                        }
+                    </p>
+                </div>
                 <div className="teacher">
                     <h3>Преподаватель:</h3>
                     <div className="layout">
@@ -182,7 +191,7 @@ const CourseDescription = () => {
                         </div>
                     </div>
                 </div>
-                {infoAboutCourse['url'] === 'http://123.com'
+                {!infoAboutCourse['is_open']
                     ? <Link to="" disabled className="closed">Запись закрыта</Link>
                     :
                     <Link

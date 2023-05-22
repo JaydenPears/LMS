@@ -249,11 +249,13 @@ const CatalogOfCourses = () => {
                                 }
                                 </p>
                                 <p>📅 { courses[index]['schedule'].join(", ") }</p>
-                                <p>💵 { courses[index]['cost'] }</p>
+                                {courses[index]['cost'][0] === 'Платно'
+                                    ? <p>💵 { courses[index]['cost'][1] }</p>
+                                    : <p>💵 { courses[index]['cost'][0] }</p>
+                                }
                                 <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
-                                {courses[index]['url'] === 'http://123.com'
-                                    ? <Link to={``} disabled className="closed">Запись закрыта</Link>
-                                    :
+                                {courses[index]['is_open']
+                                    ?
                                     <Link
                                         target={"_blank"}
                                         rel="noopener noreferrer"
@@ -262,6 +264,7 @@ const CatalogOfCourses = () => {
                                     >
                                         Записаться
                                     </Link>
+                                    : <Link to={``} disabled className="closed">Запись закрыта</Link>
                                 }
                             </div>
                         </div>
