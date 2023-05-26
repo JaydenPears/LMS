@@ -58,7 +58,7 @@ function App() {
 				</Header>
 				<AppRouter className="BodyOfContent"/>
 				<Layout>
-					<Footer style={{ textAlign: 'center', background: "#e7e7e7"}}>Learning Management System ©2023 Made by Vladimir Chernov</Footer>
+					<Footer style={{ textAlign: 'center', background: "#e7e7e7"}}>Catalog of Courses ©2023 Made by Vladimir Chernov & Evgeniy Lukichev</Footer>
 				</Layout>
 			</Layout>
 		</div>
