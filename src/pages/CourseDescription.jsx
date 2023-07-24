@@ -27,8 +27,8 @@ const getCost = (data) => {
 }
 
 const CourseDescription = () => {
-    const url = `http://admin.protonmos.ru/api/`;
-    const url_image = `http://admin.protonmos.ru/media/`;
+    const url = `https://admin.protonmos.ru/api/`;
+    const url_image = `https://admin.protonmos.ru/media/`;
     const [teacher, setTeacher] = useState({});
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});

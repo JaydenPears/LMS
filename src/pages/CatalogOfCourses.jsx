@@ -18,13 +18,13 @@ function capitalizeFirstLetter(string) {
 }
 
 const CatalogOfCourses = () => {
-    const url = `http://admin.protonmos.ru/api/`;
-    const url_image = `http://admin.protonmos.ru/media/`;
+    const url = `https://admin.protonmos.ru/api/`;
+    const url_image = `https://admin.protonmos.ru/media/`;
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
     const [settings, setSettings] = useState({});
     const [allCourses, setAllCourses] = useState([]);
-    const [courses, setCourses] = useState([])
+    const [courses, setCourses] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
     const textForFilters = [
