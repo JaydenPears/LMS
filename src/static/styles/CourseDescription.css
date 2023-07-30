@@ -40,7 +40,8 @@ p {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
-    width: 75%;
+    min-width: 75%;
+    max-width: 100%;
 }
 
 .naming .logo{
