@@ -174,7 +174,7 @@ const CourseDescription = () => {
                     }
                 </div>
                 <div className="teacher">
-                    <h3>Преподаватель:</h3>
+                    <h3>Педагог:</h3>
                     <div className="layout">
                         <div className="photo">
                             {teacher["photo"] !== undefined
@@ -190,7 +190,7 @@ const CourseDescription = () => {
                                 to={teacher['url']}
                                 className="detail-link"
                             >
-                                Подробнее об учителе
+                                Подробнее о педагоге
                             </Link>
                         </div>
                     </div>
