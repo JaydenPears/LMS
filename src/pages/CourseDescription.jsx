@@ -27,6 +27,10 @@ const getCost = (data) => {
 }
 
 const CourseDescription = () => {
+    // for test-server:
+    // const url = `http://127.0.0.1:8000/api/`;
+    // const url_image = `http://127.0.0.1:8000/media/`;
+    // for production:
     const url = `https://admin.protonmos.ru/api/`;
     const url_image = `https://admin.protonmos.ru/media/`;
     const [teacher, setTeacher] = useState({});
@@ -96,117 +100,119 @@ const CourseDescription = () => {
                 </div>
             </div>
             <div className="contentLayout">
-                <div className="activity">
-                    <div className="logo">
-                        <img
-                            src=
-                            {linkForActivityImg[type_of_activity] !== undefined
-                                ? `${url_image}${linkForActivityImg[type_of_activity]}`
-                                : ``
-                            }
-                            alt=""
-                        />
+                <div className="layoutForInfo">
+                    <div className="activity">
+                        <div className="logo">
+                            <img
+                                src=
+                                {linkForActivityImg[type_of_activity] !== undefined
+                                    ? `${url_image}${linkForActivityImg[type_of_activity]}`
+                                    : ``
+                                }
+                                alt=""
+                            />
+                        </div>
+                        <div className="name-of-activity">
+                            <h1>
+                                { translateTypeOfActivity[type_of_activity] }
+                            </h1>
+                        </div>
                     </div>
-                    <div className="name-of-activity">
-                        <h1>
-                            { translateTypeOfActivity[type_of_activity] }
-                        </h1>
+                    <div className="description">
+                        <h3>Подробнее о курсе:</h3>
+                        <p align="justify">
+                            { infoAboutCourse["full_description"] }    
+                        </p>
                     </div>
-                </div>
-                <div className="description">
-                    <h3>Подробнее о курсе:</h3>
-                    <p align="justify">
-                        { infoAboutCourse["full_description"] }    
-                    </p>
-                </div>
-                <div className="schedule">
-                    <h2>Расписание</h2>
-                    <div className="cards">
-                        {days.map((_, index) =>
-                            <div className="day-card" key={`${index}`}>
-                                <h3>
-                                    {days[index]}
-                                </h3>
-                                {infoAboutCourse['schedule'] !== undefined
-                                    ?
-                                    <>
-                                        {days[index] in infoAboutCourse["schedule"]
+                    <div className="schedule">
+                        <h2>Расписание</h2>
+                        <div className="cards">
+                            {days.map((_, index) =>
+                                <div className="day-card" key={`${index}`}>
+                                    <h3>
+                                        {days[index]}
+                                    </h3>
+                                    {infoAboutCourse['schedule'] !== undefined
                                         ?
-                                            <div className="card">
-                                                <p align="center">
-                                                    { infoAboutCourse["schedule"][days[index]][0] }
-                                                    <br/>-<br/>
-                                                    { infoAboutCourse["schedule"][days[index]][1] }
-                                                </p>
-                                            </div>
+                                        <>
+                                            {days[index] in infoAboutCourse["schedule"]
+                                            ?
+                                                <div className="card">
+                                                    <p align="center">
+                                                        { infoAboutCourse["schedule"][days[index]][0] }
+                                                        <br/>-<br/>
+                                                        { infoAboutCourse["schedule"][days[index]][1] }
+                                                    </p>
+                                                </div>
+                                            :
+                                                <div className="card" style={{background:"#b8b8b8"}}>
+                                                    <p align="center">
+                                                        -
+                                                    </p>
+                                                </div>
+                                            }
+                                        </>
                                         :
-                                            <div className="card" style={{background:"#b8b8b8"}}>
-                                                <p align="center">
-                                                    -
-                                                </p>
-                                            </div>
-                                        }
-                                    </>
-                                    :
-                                    <div className="card">
-                                        <p align="center">
-                                            00:00
-                                            <br/>-<br/>
-                                            00:00
-                                        </p>
-                                    </div>
+                                        <div className="card">
+                                            <p align="center">
+                                                00:00
+                                                <br/>-<br/>
+                                                00:00
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <div className="intelligence">
+                        <h3>Адрес проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["address"] }</p>
+                    </div>
+                    <div className="type-of-study">
+                        <h3>Формат проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["format"] }</p>
+                    </div>
+                    <div className="cost">
+                        <h3>Стоимость занятий: </h3>
+                        {infoAboutCourse['cost'] === undefined
+                            ? <p className="with-text-decoration"></p>
+                            : <p className="with-text-decoration">{getCost(infoAboutCourse['cost'])}</p>
+                        }
+                    </div>
+                    <div className="teacher">
+                        <h3>Педагог:</h3>
+                        <div className="layout">
+                            <div className="photo">
+                                {teacher["photo"] !== undefined
+                                    ? <img src={teacher["photo"]} alt=""/>
+                                    : <img src="" alt=""/>
                                 }
                             </div>
-                        )}
+                            <div className="about-teacher">
+                                <p className="">{ teacher["name"] }</p>
+                                <Link
+                                    target={"_blank"}
+                                    rel="noopener noreferrer"
+                                    to={teacher['url']}
+                                    className="detail-link"
+                                >
+                                    Подробнее о педагоге
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="intelligence">
-                    <h3>Адрес проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["address"] }</p>
-                </div>
-                <div className="type-of-study">
-                    <h3>Формат проведения: </h3><p className="with-text-decoration">{ infoAboutCourse["format"] }</p>
-                </div>
-                <div className="cost">
-                    <h3>Стоимость занятий: </h3>
-                    {infoAboutCourse['cost'] === undefined
-                        ? <p className="with-text-decoration"></p>
-                        : <p className="with-text-decoration">{getCost(infoAboutCourse['cost'])}</p>
+                    {!infoAboutCourse['is_open']
+                        ? <Link to="" disabled className="closed">Запись закрыта</Link>
+                        :
+                        <Link
+                            to={`${infoAboutCourse['url']}`}
+                            className="enter"
+                            target={"_blank"}
+                            rel="noopener noreferrer"
+                        >
+                            Записаться
+                        </Link>
                     }
                 </div>
-                <div className="teacher">
-                    <h3>Педагог:</h3>
-                    <div className="layout">
-                        <div className="photo">
-                            {teacher["photo"] !== undefined
-                                ? <img src={teacher["photo"]} alt=""/>
-                                : <img src="" alt=""/>
-                            }
-                        </div>
-                        <div className="about-teacher">
-                            <p className="">{ teacher["name"] }</p>
-                            <Link
-                                target={"_blank"}
-                                rel="noopener noreferrer"
-                                to={teacher['url']}
-                                className="detail-link"
-                            >
-                                Подробнее о педагоге
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                {!infoAboutCourse['is_open']
-                    ? <Link to="" disabled className="closed">Запись закрыта</Link>
-                    :
-                    <Link
-                        to={`${infoAboutCourse['url']}`}
-                        className="enter"
-                        target={"_blank"}
-                        rel="noopener noreferrer"
-                    >
-                        Записаться
-                    </Link>
-                }
             </div>
         </div>
     );

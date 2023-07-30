@@ -18,6 +18,10 @@ function capitalizeFirstLetter(string) {
 }
 
 const CatalogOfCourses = () => {
+    // for test-server:
+    // const url = `http://127.0.0.1:8000/api/`;
+    // const url_image = `http://127.0.0.1:8000/media/`;
+    // for production:
     const url = `https://admin.protonmos.ru/api/`;
     const url_image = `https://admin.protonmos.ru/media/`;
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
