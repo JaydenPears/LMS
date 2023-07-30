@@ -12,8 +12,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 900px;
-    height: 240px;
+    max-width: 900px;
+    min-height: 240px;
     margin: 20px 10px 20px;
 }
 
