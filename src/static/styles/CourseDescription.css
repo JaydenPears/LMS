@@ -41,7 +41,7 @@ p {
     flex-wrap: wrap;
     align-items: flex-start;
     min-width: 75%;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .naming .logo{
@@ -230,4 +230,10 @@ p {
 .contentLayout a:hover {
     background: #ffffff;
     color: #000;
+}
+
+@media (any-pointer: coarse) {
+    .layoutForInfo {
+        max-width: 100%;
+    }
 }
