@@ -5,6 +5,7 @@ async function getData(url) {
     const priority = ["type_of_activity", "address", "age_limit", "schedule", "cost"];
     const data = {
         "age_limit": [
+            {label: "Дошкольники (3 - 7 лет)", value: "Дошкольники (3 - 7 лет)"},
             {label: "1 класс", value: "1 класс"},
             {label: "2 класс", value: "2 класс"},
             {label: "3 класс", value: "3 класс"},

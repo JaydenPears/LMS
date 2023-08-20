@@ -67,13 +67,17 @@ const CatalogOfCourses = () => {
         });
     }, [setAllCourses, url]);
 
-    const convertNum = (strNum) => {
-        if (strNum === 3){
-            return `${strNum}-и`
+    function ageLimitConvert(first_string, second_string) {
+        if (first_string === 'Дошкольники (3 - 7 лет)' && first_string == second_string){
+            return first_string;
         }
-        else{
-            return `${strNum}`
+        if (first_string === 'Дошкольники (3 - 7 лет)' && second_string){
+            return `${first_string} - ${second_string} классы`;
         }
+        if (first_string === second_string){
+            return `${first_string} классы`;
+        }
+        return `${first_string}-${second_string} классы`;
     }
 
     const [activityFilter, setActivityFilter] = useState([]);
@@ -109,20 +113,24 @@ const CatalogOfCourses = () => {
                 count++;
             }
 
-            let ages = []
+            let ages = [];
             for (let i in ageLimitFilter){
-                let age = Number(ageLimitFilter[i].split(" ")[0])
-                ages.push(age);
+                let age = ageLimitFilter[i].split(" ")[0];
+                ages.push(Number(age));
             }
-            if (item["age_limit"].length === 1 && ages.length !== 0){
-                if (ages.includes(Number(item["age_limit"][0]))){
-                    count++;
+            let age = [];
+            for (let i in item["age_limit"]){
+                if (item["age_limit"][i].split(' ')[0] === 'Дошкольники'){
+                    age.push(0);
+                }
+                else{
+                    age.push(Number(item["age_limit"][i].split(' ')[0]));
                 }
             }
-            else if (item["age_limit"].length === 2 && ages.length !== 0) {
+
+            if (ages.length !== 0){
                 for (let i in ages){
-                    let num = ages[i];
-                    if (num >= Number(item["age_limit"][0]) && num <= Number(item["age_limit"][1])){
+                    if (ages[i] >= age[0] && ages[i] <= age[1]){
                         count++;
                         break;
                     }
@@ -144,13 +152,14 @@ const CatalogOfCourses = () => {
             else{
                 count++;
             }
+
             let courseCost = capitalizeFirstLetter(item["cost"][0])
             if (costFilter.length !== 0){
                 if (costFilter.includes(courseCost)){
                     count++;
                 }
             }
-            else{
+            else {
                 count++;
             }
 
@@ -165,6 +174,7 @@ const CatalogOfCourses = () => {
         if (!searchText){
             return listOfCourses;
         }
+
         return listOfCourses.filter(({name}) => {
             return name.toLowerCase().includes(searchText.toLowerCase())});
     }
@@ -172,6 +182,7 @@ const CatalogOfCourses = () => {
     const filteredAndSearchedCourses = () => {
         let searchedCourses = filterSearchCourses(searchTerm, allCourses);
         let searchedAndFilteredCourses = filterCourses(searchedCourses);
+        console.log(searchedAndFilteredCourses);
         return searchedAndFilteredCourses;
     }
 
@@ -238,38 +249,36 @@ const CatalogOfCourses = () => {
                                 />
                                 <h3>{ courses[index]['name'] }</h3>
                             </div>
-                            <div className="description">
-                                <p align="justify">
-                                    { courses[index]['short_description'] }
-                                </p>
-                            </div>
-                            <div className="about-course">
-                                <p>👨‍🏫 { courses[index]['teacher'] }</p>
-                                <p>🏢 { courses[index]['address'] }</p>
-                                <p>🧒
-                                {courses[index]['age_limit'][0] === courses[index]['age_limit'][1]
-                                    ? ` ${convertNum(courses[index]['age_limit'][0])} классы`
-                                    : ` ${courses[index]['age_limit'][0]}-${courses[index]['age_limit'][1]} классы`
-                                }
-                                </p>
-                                <p>📅 { courses[index]['schedule'].join(", ") }</p>
-                                {courses[index]['cost'][0] === 'Платно'
-                                    ? <p>💵 { `${courses[index]['cost'][1]} рублей за занятие` }</p>
-                                    : <p>💵 { courses[index]['cost'][0] }</p>
-                                }
-                                <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
-                                {courses[index]['is_open']
-                                    ?
-                                    <Link
-                                        target={"_blank"}
-                                        rel="noopener noreferrer"
-                                        to={`${courses[index]['url']}`}
-                                        className="enter"
-                                    >
-                                        Записаться
-                                    </Link>
-                                    : <Link to={``} disabled className="closed">Запись закрыта</Link>
-                                }
+                            <div className="desc-layout">
+                                <div className="description">
+                                    <p align="justify">
+                                        { courses[index]['short_description'] }
+                                    </p>
+                                </div>
+                                <div className="about-course">
+                                    <p>👨‍🏫 { courses[index]['teacher'].join(', ') }</p>
+                                    <p>🏢 { courses[index]['address'] }</p>
+                                    <p>🧒 { ageLimitConvert(courses[index]['age_limit'][0], courses[index]['age_limit'][1]) }
+                                    </p>
+                                    <p>📅 { courses[index]['schedule'].join(", ") }</p>
+                                    {courses[index]['cost'][0] === 'Платно'
+                                        ? <p>💵 { `${courses[index]['cost'][1]} рублей за занятие` }</p>
+                                        : <p>💵 { courses[index]['cost'][0] }</p>
+                                    }
+                                    <Link to={`/course_info/${courses[index]['id_course']}`} className="detailed-info">Подробнее</Link>
+                                    {courses[index]['is_open']
+                                        ?
+                                        <Link
+                                            target={"_blank"}
+                                            rel="noopener noreferrer"
+                                            to={`${courses[index]['url']}`}
+                                            className="enter"
+                                        >
+                                            Записаться
+                                        </Link>
+                                        : <Link to={``} disabled className="closed">Запись закрыта</Link>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>)}

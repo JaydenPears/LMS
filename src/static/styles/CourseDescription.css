@@ -170,7 +170,11 @@ p {
 }
 
 .teacher {
-    margin: 0px 70px 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .teacher h3{
@@ -192,6 +196,7 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .about-teacher {
@@ -199,6 +204,10 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.teachers {
+    margin: 0px 70px 0px;
 }
 
 .contentLayout a {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import Teachers from '../components/Teachers'
 
 // static imports
 import "../static/styles/CourseDescription.css"
@@ -33,10 +34,21 @@ const CourseDescription = () => {
     // for production:
     const url = `https://admin.protonmos.ru/api/`;
     const url_image = `https://admin.protonmos.ru/media/`;
-    const [teacher, setTeacher] = useState({});
     const [translateTypeOfActivity, settranslateTypeOfActivity] = useState({});
     const [linkForActivityImg, setlinkForActivityImg] = useState({});
-    const [infoAboutCourse, setInfoAboutCourse] = useState({});
+    const [infoAboutCourse, setInfoAboutCourse] = useState({
+        "id_course": 0,
+        "type_of_activity": 1,
+        "name": "",
+        "teachers": [
+            {
+                "name": "",
+                "url": "",
+                "photo": "",
+                "phone": "",
+            }
+        ],
+    });
     const location = useLocation();
 
     let data = location.pathname.split('/');
@@ -50,12 +62,6 @@ const CourseDescription = () => {
         ).then((response) => {
             const data = response.data;
             setInfoAboutCourse({...data});
-            axios.get(
-                `${url}teacher/${data["teacher_id"]}/`
-            ).then((response) => {
-                const data_teacher = response.data;
-                setTeacher({"photo": data_teacher["photo"], "name": data_teacher["fio"], "url": data_teacher['url']});
-            });
         });
 
         axios.get(
@@ -178,28 +184,7 @@ const CourseDescription = () => {
                             : <p className="with-text-decoration">{getCost(infoAboutCourse['cost'])}</p>
                         }
                     </div>
-                    <div className="teacher">
-                        <h3>Педагог:</h3>
-                        <div className="layout">
-                            <div className="photo">
-                                {teacher["photo"] !== undefined
-                                    ? <img src={teacher["photo"]} alt=""/>
-                                    : <img src="" alt=""/>
-                                }
-                            </div>
-                            <div className="about-teacher">
-                                <p className="">{ teacher["name"] }</p>
-                                <Link
-                                    target={"_blank"}
-                                    rel="noopener noreferrer"
-                                    to={teacher['url']}
-                                    className="detail-link"
-                                >
-                                    Подробнее о педагоге
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    <Teachers data={infoAboutCourse["teachers"]}/>
                     {!infoAboutCourse['is_open']
                         ? <Link to="" disabled className="closed">Запись закрыта</Link>
                         :
