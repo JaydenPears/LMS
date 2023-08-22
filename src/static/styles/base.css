@@ -29,3 +29,24 @@ header {
     color: #fff;
 }
 
+.logo-picture {
+    width: 5%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-picture img {
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 10rem;
+}
+
+.header .layout {
+    display: flex;
+    flex-direction: row;
+
+}

@@ -6,6 +6,10 @@ import "./static/styles/base.css"
 import { Layout, Menu } from 'antd';
 import { useLocation } from 'react-router-dom';
 
+// static imports
+import proton_round from "./static/imgs/proton-round.png"
+import "./static/styles/base.css";
+
 const { Header, Footer } = Layout;
 const infoForNavbar = [
 	"Каталог курсов",
@@ -36,7 +40,10 @@ function App() {
 	return (
 		<div className="AppDiv">
 			<Layout className="layout" style={{minHeight: "100%"}}>
-				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }}>
+				<Header style={{position: "sticky", top: 0, zIndex: 999, width: '100%' }} className="">
+						{/* <div className="logo-picture">
+							<img src={proton_round} alt=""/>
+						</div> */}
 					<div className="logo" style={{whiteSpace: "nowrap", width: "auto", fontSize: "42px"}}>
 						<Link className="MainPageLink" to="">Каталог курсов</Link>
 					</div>

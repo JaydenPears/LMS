@@ -11,7 +11,7 @@ const ResultOfTest = () => {
     const location = useLocation().pathname.split('/');
     const prev_location = location.slice(0, location.length - 1).join('/');
     const {state} = useLocation();
-    const { test_id, show_results, text } = state;
+    const { test_id, text } = state;
 
     const TITLE = `Результаты тестирования № ${test_id}`;
 

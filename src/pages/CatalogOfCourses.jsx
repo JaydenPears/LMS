@@ -68,7 +68,7 @@ const CatalogOfCourses = () => {
     }, [setAllCourses, url]);
 
     function ageLimitConvert(first_string, second_string) {
-        if (first_string === 'Дошкольники (3 - 7 лет)' && first_string == second_string){
+        if (first_string === 'Дошкольники (3 - 7 лет)' && first_string === second_string){
             return first_string;
         }
         if (first_string === 'Дошкольники (3 - 7 лет)' && second_string){
@@ -116,6 +116,9 @@ const CatalogOfCourses = () => {
             let ages = [];
             for (let i in ageLimitFilter){
                 let age = ageLimitFilter[i].split(" ")[0];
+                if (age === 'Дошкольники'){
+                    age = 0;
+                }
                 ages.push(Number(age));
             }
             let age = [];
@@ -127,7 +130,6 @@ const CatalogOfCourses = () => {
                     age.push(Number(item["age_limit"][i].split(' ')[0]));
                 }
             }
-
             if (ages.length !== 0){
                 for (let i in ages){
                     if (ages[i] >= age[0] && ages[i] <= age[1]){
@@ -182,7 +184,6 @@ const CatalogOfCourses = () => {
     const filteredAndSearchedCourses = () => {
         let searchedCourses = filterSearchCourses(searchTerm, allCourses);
         let searchedAndFilteredCourses = filterCourses(searchedCourses);
-        console.log(searchedAndFilteredCourses);
         return searchedAndFilteredCourses;
     }
 

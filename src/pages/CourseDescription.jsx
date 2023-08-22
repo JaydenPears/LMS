@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Teachers from '../components/Teachers'
+import Teachers from '../components/Teachers';
 
 // static imports
-import "../static/styles/CourseDescription.css"
-import proton_round from "../static/imgs/proton-round.png"
+import "../static/styles/CourseDescription.css";
+import proton_round from "../static/imgs/proton-round.png";
 
 axios.defaults.baseURL = '';
 
